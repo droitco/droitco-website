@@ -922,3 +922,97 @@ body.sheet { background: var(--bg); }
     box-shadow: none;
   }
 }
+
+
+/* Industry stats + charts */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  margin: 1.15rem 0 1.7rem;
+}
+@media (min-width: 720px) {
+  .stat-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.stat {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.15rem 1.05rem;
+}
+.stat .stat-num {
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: var(--navy);
+  line-height: 1.05;
+  margin: 0 0 0.32rem;
+}
+.stat p { margin: 0; color: var(--slate); font-size: 0.9rem; line-height: 1.4; }
+.charts {
+  display: grid;
+  gap: 1.15rem;
+}
+@media (min-width: 860px) {
+  .charts { grid-template-columns: 1fr 1fr; }
+}
+.chart-panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.25rem 1.1rem;
+  background: var(--white);
+}
+.chart-panel h3 { margin-bottom: 0.95rem; }
+.chart-row {
+  display: grid;
+  grid-template-columns: 7.6rem 1fr 3.5rem;
+  gap: 0.5rem 0.8rem;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+.chart-row:last-of-type { margin-bottom: 0; }
+.chart-label { font-size: 0.8rem; color: var(--slate); line-height: 1.3; }
+.chart-track {
+  display: block;
+  height: 0.58rem;
+  background: #e8ebf0;
+  border-radius: 99px;
+  overflow: hidden;
+}
+.chart-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--navy);
+  border-radius: 99px;
+}
+.chart-val {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.chart-note {
+  margin: 0.9rem 0 0;
+  font-size: 0.76rem;
+  color: var(--muted);
+  max-width: 40rem;
+  line-height: 1.45;
+}
+.donut-wrap {
+  display: grid;
+  grid-template-columns: 7.2rem 1fr;
+  gap: 1.1rem;
+  align-items: center;
+}
+.donut-wrap svg { width: 7.2rem; height: 7.2rem; }
+.donut-copy p { margin: 0 0 0.4rem; color: var(--slate); font-size: 0.92rem; }
+.donut-copy p:last-child { margin-bottom: 0; }
+@media (max-width: 639px) {
+  .chart-row { grid-template-columns: 1fr auto; }
+  .chart-track { grid-column: 1 / -1; }
+  .donut-wrap { grid-template-columns: 1fr; justify-items: start; }
+}
