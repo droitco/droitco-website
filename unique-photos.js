@@ -13,4 +13,5 @@ img.height=h;
 set('Edgewood Storage, Mosinee — drive-up units','_tmp/edgewood.b64.txt',400,161);
 set('Southview Mini Warehouses, Eau Claire — facility exterior','_tmp/southview.b64.txt',400,225);
 set('Smart Self Storage, Dayton — drive aisle','_tmp/dayton.b64.txt',400,225);
+set('Riverfront Mini Storage, Mankato — facility exterior','_tmp/mankato.b64.txt',240,150);
 })();
