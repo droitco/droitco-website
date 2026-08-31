@@ -28,7 +28,7 @@ set('Smart Self Storage, Dayton — drive aisle','_tmp/dayton.b64.txt',400,225);
 setJoin('Riverfront Mini Storage, Mankato — facility exterior','_tmp/mankato.a.txt','_tmp/mankato.b.txt',240,150);
 document.querySelectorAll('p.lede').forEach(function(p){
 if(p.textContent.indexOf('We also develop new facilities')!==-1){
-p.innerHTML='More new facilities coming soon. <a href="builds.html">See Builds for more information</a>.';
+p.innerHTML='New facilities coming soon. <a href="builds.html">See Builds for more information</a>.';
 }
 });
 })();
