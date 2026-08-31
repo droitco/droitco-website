@@ -1,4 +1,4 @@
-/* Droit LLC — editorial corporate, navy, Fraunces + Inter */
+/* Droit — editorial corporate, navy, Fraunces + Inter */
 :root {
   --navy: #1a2744;
   --navy-mid: #243556;
@@ -105,20 +105,12 @@ input:focus-visible {
   color: var(--white);
   text-decoration: none;
   font-family: var(--sans);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  font-size: 0.88rem;
-}
-.brand:hover { color: var(--white); }
-.brand span {
-  display: block;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  font-size: 0.64rem;
-  color: #c5ccd8;
-  margin-top: 0.16rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 1.05rem;
   text-transform: none;
 }
+.brand:hover { color: var(--white); }
 
 body.home .header-phone { display: none; }
 .header-phone {
@@ -789,9 +781,9 @@ body.sheet { background: var(--bg); }
 }
 .sheet-mark {
   font-family: var(--sans);
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 1.02rem;
   color: var(--navy);
   text-decoration: none;
 }
