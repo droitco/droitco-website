@@ -2,15 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://droitco.github.io/droitco-website/</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-31</lastmod>
   </url>
   <url>
     <loc>https://droitco.github.io/droitco-website/locations.html</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-31</lastmod>
+  </url>
+  <url>
+    <loc>https://droitco.github.io/droitco-website/booking.html</loc>
+    <lastmod>2026-08-31</lastmod>
+  </url>
+  <url>
+    <loc>https://droitco.github.io/droitco-website/management.html</loc>
+    <lastmod>2026-08-31</lastmod>
   </url>
   <url>
     <loc>https://droitco.github.io/droitco-website/contact.html</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-31</lastmod>
   </url>
   <url>
     <loc>https://droitco.github.io/droitco-website/builds.html</loc>
@@ -18,10 +26,10 @@
   </url>
   <url>
     <loc>https://droitco.github.io/droitco-website/privacy.html</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-31</lastmod>
   </url>
   <url>
     <loc>https://droitco.github.io/droitco-website/terms.html</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-31</lastmod>
   </url>
 </urlset>
