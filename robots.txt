@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://droitco.github.io/droitco-website/sitemap.xml
+Sitemap: https://droitco.com/sitemap.xml
