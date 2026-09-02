@@ -1,0 +1,133 @@
+{
+  "dayton": {
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      1920
+    ],
+    "width": 3024,
+    "height": 2689,
+    "ratio": 0.8892,
+    "lqip": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABQBQCdASoYABUAPu1qrFEppaQiqAqpMB2JZwCdABE/tHqFKTGJ3WRslVZji7xpN/8H9eAA/t9DyWFbWYvTs7USTJXJKxWXIialGqmw0NIOZVK8WJ5D3gpU/56Kuc/LgLvCj16fc4xpV9t3Q8YWhNtzUb8m5MpXQZY4MSEnmO6p5av4cgA="
+  },
+  "des-moines": {
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "width": 1600,
+    "height": 1200,
+    "ratio": 0.75,
+    "lqip": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABwBACdASoYABIAPu1kq1AppSOisBgIATAdiWUAuwAPoAAPjZdRE9gMAO0igAD+g/ajNK1VLcmLGjI+ka6O87aoKvdyXCQuIQx66GsDVpfcQUkH8Vy3CuYTTKRo+UZngwNi+QILWPZ3JKNUqaQ/OVTiAyJAAA=="
+  },
+  "eau-claire-clear-space-aerial": {
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      1920
+    ],
+    "width": 1920,
+    "height": 1080,
+    "ratio": 0.5625,
+    "lqip": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAACwBACdASoYAA4APu1iqU2ppaOiMAgBMB2JZQDG9YxEq2XWKdGmn0U786asutsAAP6ozt31kF/9hgPa5TahJcX5wYkJBdoXwFQaoaFOd7BLjNdl+RKF9b2OH8B/566nv9QjEF48o66aWE+O+hGmUeac2cqGX9HYG8DUTHl+ZFixRkX7k1oOopxqxWF2M4LTp384oAAA"
+  },
+  "eau-claire-clear-space": {
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "width": 1400,
+    "height": 788,
+    "ratio": 0.5629,
+    "lqip": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACwAwCdASoYAA0APu1iqU2ppaOiMAgBMB2JQBYdjSwByiPIzF+wAAD+/Ash70M8QP4UVhIy0fIBROn6JCjnLxRIHPX9y68N5zMFF/rSfk9l5gdU0lCXV03cp6wGEdQ/D7iWjpZUuJQXqGhT9VP9sMfpO91KUDnkRwuEwlo84AA="
+  },
+  "eau-claire-southview": {
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      1920
+    ],
+    "width": 4404,
+    "height": 2477,
+    "ratio": 0.5624,
+    "lqip": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACwAwCdASoYAA0APu1iqk2ppaQiMAgBMB2JYwCo9CHOXiLfcAWAAAD8j+idbF2p7paToueCaEObe3ZLjjB9EkNspYjkK+NQvkzPAvopTmFDf/XB2m3dqjVingXVfdQF5ervQ3Rh8vLR8b2LyWQ8AHLhB4Gj4AfiDHXBBM3aSHJVhvCkOxV2sY9AAAA="
+  },
+  "mankato": {
+    "widths": [
+      400,
+      800,
+      1200,
+      1600
+    ],
+    "width": 1600,
+    "height": 1066,
+    "ratio": 0.6663,
+    "lqip": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABQBACdASoYABAAPu1iqk2ppaQiMAgBMB2JQBOmUABbZDGBSLkVZ2re09DAAP7EMq/aZNNlyORZpjf1GIt/2K+aMMFS+agO4yWxTvFk1pbjdaGi6IVoVD0piBqTWvmjqywmHWBH/H3dCECmfERZaLpVQhFIIjUPObeWAY+ns1zxuxU1/KYr4vtZUMDCQPeNKYQAAA=="
+  },
+  "medical-lake": {
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "width": 1333,
+    "height": 1000,
+    "ratio": 0.7502,
+    "lqip": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADQBACdASoYABIAPu1qrlCppaQiqAqpMB2JZQC3vAgAlErnUNdwcVF9y6i6NIk+QAD4o7AmHZY8dcWQc/cADfdPwxme6Kj1ogXZBqA4tWuFkAW//yKtQFwH/KDFcn8Bb7I9rWNvknhwZ703lykq0fE/QCpunhue1aacKdhkaWu6p56AHYtfn4kgKYRmAAAA"
+  },
+  "memphis": {
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "width": 1333,
+    "height": 1000,
+    "ratio": 0.7502,
+    "lqip": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADQAwCdASoYABIAPu1krE+ppSQiMBgIATAdiUAVHoGy1MGBmnyPc6AAyydOKd9xuFaPN82FlIv+AQcwuDVzv4BuTTKDxKaauDYjIJtV6+AHA8cIcATCeY9LBEoa0Umua42oX2O4dEK8sK9YqrVaXzGayd6PvZZC5MAAAA=="
+  },
+  "mosinee": {
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "width": 1200,
+    "height": 483,
+    "ratio": 0.4025,
+    "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACwAwCdASoYAAoAPu1mqk4ppaOiMAgBMB2JQBYdg0TKK5xyhH35MAD+S9v6/TpAvWA9seomSpGesCgrx7VoG1kQHXGDLk0ladt9kqwcNMs7oNO0vMNvjBdOIwARy5IPx3fkw1ZkAAA="
+  },
+  "odessa": {
+    "widths": [
+      400,
+      800,
+      1200
+    ],
+    "width": 1206,
+    "height": 654,
+    "ratio": 0.5423,
+    "lqip": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAwBACdASoYAA0APu1iqU2ppaOiMAgBMB2JYwCsAB6Sg5sjsemAJG+ZsGAA+oPD5Uc3nY/InJHyxmCOfbCYcQynuurlnKs0CiPPLShBABw0R1CmCeRHXBpyhsa8Aylo9F8luhAHlnzgu3FZjUcDXKAA"
+  },
+  "river-falls": {
+    "widths": [
+      400,
+      800,
+      1200,
+      1600,
+      1920
+    ],
+    "width": 2200,
+    "height": 1467,
+    "ratio": 0.6668,
+    "lqip": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAADQAwCdASoYABAAPu1iqU2ppaQiMAgBMB2JZQCdH8ACgfltbr9pvvAA98yPGLsWMESbX/KsntaXGiP5gCKyUwT+5oyfG1Sz2r49r79CpAsjAAWWiybl2hOp9LV8KrLq1d8YVxYnL8RAThDjCYoUGgud0wbLCgjE2Z9MdmzXgZgAAA=="
+  }
+}
