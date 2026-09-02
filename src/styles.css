@@ -290,11 +290,7 @@ body.no-hero .site-header {
 .brand:hover {
   color: #fff;
 }
-.brand-mark {
-  width: 1.55rem;
-  height: 1.55rem;
-  flex: none;
-}
+
 
 .site-nav {
   display: flex;

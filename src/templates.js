@@ -14,7 +14,6 @@ const ICON = {
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>',
 };
 
-const MARK = `<svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#e1751f"/><path d="M9 8h6.6c5 0 8.4 3.2 8.4 8s-3.4 8-8.4 8H9V8Zm4.3 3.7v8.6h2.1c2.6 0 4.3-1.7 4.3-4.3s-1.7-4.3-4.3-4.3h-2.1Z" fill="#fff"/></svg>`;
 
 /* ---------- Images ---------- */
 // widths: which derivative widths to offer; `sizes` must match the CSS box.
@@ -40,7 +39,7 @@ export const lqip = (images, name) => (images[name] ? `background-image:url(${im
 /* ---------- Chrome ---------- */
 const header = (current, up = '') => `<header class="site-header">
       <div class="wrap">
-        <a class="brand" href="${up}index.html">${MARK}${site.brand}</a>
+        <a class="brand" href="${up}index.html">${site.brand}</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span></button>
         <nav class="site-nav" id="site-nav" aria-label="Primary">
           <a href="${up}index.html"${current === 'index' ? ' aria-current="page"' : ''}>Home</a>
@@ -66,7 +65,7 @@ const footer = (stores, up = '') => `<footer class="site-footer">
       <div class="wrap">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a class="brand" href="${up}index.html">${MARK}${site.brand}</a>
+            <a class="brand" href="${up}index.html">${site.brand}</a>
             <p><a class="footer-phone" href="tel:${site.phone.tel}">${site.phone.display}</a></p>
             <p>Self storage with 24/7 access, and the crew that builds and runs it.</p>
           </div>

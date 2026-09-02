@@ -102,7 +102,7 @@ const smsSection = (id = 'sms-opt-in') => `      <section class="section" id="${
       <div class="wrap">
         <p class="eyebrow" data-reveal>Self storage</p>
         <h1 data-reveal style="--i:1">Storage that never closes.</h1>
-        <p data-reveal style="--i:2">Ten stores across seven states. Drive-up units and outdoor parking, rented online. The gate does not close at night.</p>
+        <p data-reveal style="--i:2">Ten stores across seven states. Drive-up units and outdoor parking, rented online, with gate access any hour of the day or night.</p>
         <div class="btn-row" data-reveal style="--i:3">
           <a class="btn btn-accent" href="#find">Find a location ${ICON.arrow}</a>
           <a class="btn btn-outline-light" href="tel:${site.phone.tel}">${ICON.phone} ${site.phone.display}</a>
@@ -143,7 +143,7 @@ ${stores.map((s, i) => '            ' + storeCard(images, s, i)).join('\n')}
             </li>
             <li class="step" data-reveal style="--i:2">
               <h3>Move in, any hour</h3>
-              <p>Access at every open store is 24 hours a day, seven days a week. The gate does not close at night.</p>
+              <p>Access at every open store is 24 hours a day, seven days a week. Your gate code works whenever you need it, including nights and weekends.</p>
             </li>
           </ol>
         </div>
@@ -295,7 +295,7 @@ for (const s of stores) {
             <p class="eyebrow">This store</p>
             <h2 class="h-md">${esc(s.name)}</h2>
             <p class="lede">${esc(s.summary)}</p>
-            <p>Access here is 24 hours a day, seven days a week — the gate does not close at night. Rentals are completed online, so you do not need to wait for an office to open.</p>
+            <p>Access here is 24 hours a day, seven days a week: your gate code works at any hour, including nights and weekends. Rentals are completed online, so you do not need to wait for an office to open.</p>
             <p>Call <a href="tel:${s.phone.tel}">${s.phone.display}</a> for anything about this store: unit sizes, availability, or your existing account.</p>
             <ul class="tags">
 ${s.features.map((f) => `              <li class="tag">${esc(f)}</li>`).join('\n')}
