@@ -1,4 +1,8 @@
 (function(){
+document.querySelectorAll('a.brand').forEach(function(el){ el.textContent='DROIT'; });
+var s=document.createElement('style');
+s.textContent='.brand{text-transform:uppercase;letter-spacing:.12em}';
+document.head.appendChild(s);
 function set(alt, path, w, h){
 fetch(path).then(function(r){return r.text()}).then(function(b){
 document.querySelectorAll('img').forEach(function(img){
