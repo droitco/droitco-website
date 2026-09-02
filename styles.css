@@ -106,9 +106,9 @@ input:focus-visible {
   text-decoration: none;
   font-family: var(--sans);
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.12em;
   font-size: 1.05rem;
-  text-transform: none;
+  text-transform: uppercase;
 }
 .brand:hover { color: var(--white); }
 
