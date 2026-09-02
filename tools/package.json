@@ -1,0 +1,18 @@
+{
+  "name": "droit-site-tools",
+  "private": true,
+  "type": "module",
+  "description": "Build scripts for droitco.com. Not published and not served.",
+  "scripts": {
+    "images": "node build-images.mjs",
+    "site": "node build-site.mjs",
+    "check": "node check.mjs",
+    "audit": "node audit.mjs",
+    "serve": "node serve.mjs",
+    "preview": "node build-preview.mjs",
+    "build": "node build-site.mjs && node check.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.34.4"
+  }
+}
