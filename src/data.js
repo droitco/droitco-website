@@ -10,11 +10,13 @@ export const site = {
   founded: '2020-01-01',
 };
 
+// Grouped by audience: renters first, then the owner path behind one hub,
+// then the company. Booking and Management live under Owners, not in the nav.
 export const nav = [
   { href: 'locations.html', label: 'Locations' },
-  { href: 'builds.html', label: 'Builds' },
-  { href: 'booking.html', label: 'Booking' },
-  { href: 'management.html', label: 'Management' },
+  { href: 'owners.html', label: 'Owners' },
+  { href: 'builds.html', label: 'Development' },
+  { href: 'about.html', label: 'About' },
   { href: 'contact.html', label: 'Contact' },
 ];
 

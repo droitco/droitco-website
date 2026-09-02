@@ -117,6 +117,24 @@ for (const file of files) {
   if (!/class="brand"[^>]*>.*?DROIT/s.test(html)) fail(rel, 'header brand is not DROIT in the served HTML');
 }
 
+// A2P/10DLC campaign CTD3F6D (RingCentral) was filed against droitco.com/privacy.html
+// and droitco.com/terms.html, with the homepage itself as the opt-in page. If the
+// consent checkbox or either link disappears from the front page, the campaign's
+// filed evidence stops matching the live site. Fail the build rather than ship that.
+{
+  const home = await readFile(join(ROOT, 'index.html'), 'utf8');
+  const bottom = home.slice(home.indexOf('<main'));
+  if (!/id="sms-opt-in"/.test(home)) fail('index.html', 'A2P: #sms-opt-in anchor is missing from the homepage');
+  if (!/name="sms_opt_in"[^>]*type="checkbox"|type="checkbox"[^>]*name="sms_opt_in"/.test(home))
+    fail('index.html', 'A2P: the SMS consent checkbox is missing from the homepage');
+  for (const phrase of ['Reply STOP', 'Message and data rates may apply', 'Consent is not a condition'])
+    if (!home.includes(phrase)) fail('index.html', `A2P: consent language missing the phrase "${phrase}"`);
+  for (const link of ['privacy.html', 'terms.html']) {
+    if (!new RegExp(`href="${link}"`).test(bottom)) fail('index.html', `A2P: homepage must link to ${link}`);
+    if (!(await exists(join(ROOT, link)))) fail(link, 'A2P: cited in the campaign filing and must stay live');
+  }
+}
+
 // Canonical host + sitemap agreement
 const sitemap = await readFile(join(ROOT, 'sitemap.xml'), 'utf8');
 for (const m of sitemap.matchAll(/<loc>https:\/\/droitco\.com\/([^<]*)<\/loc>/g)) {

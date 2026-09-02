@@ -70,7 +70,7 @@ const footer = (stores, up = '') => `<footer class="site-footer">
             <p>Self storage with 24/7 access, and the crew that builds and runs it.</p>
           </div>
           <div>
-            <h2>Rent</h2>
+            <h2>Storage</h2>
             <ul>
               <li><a href="${up}locations.html">All locations</a></li>
 ${stores
@@ -91,9 +91,14 @@ ${stores
           <div>
             <h2>Owners</h2>
             <ul>
+              <li><a href="${up}owners.html">Owner services</a></li>
               <li><a href="${up}booking.html">Booking</a></li>
               <li><a href="${up}management.html">Management</a></li>
-              <li><a href="${up}builds.html">Builds</a></li>
+              <li><a href="${up}builds.html">Development</a></li>
+            </ul>
+            <h2 class="footer-h2-gap">Company</h2>
+            <ul>
+              <li><a href="${up}about.html">About</a></li>
               <li><a href="${up}contact.html">Contact</a></li>
             </ul>
           </div>
@@ -208,6 +213,29 @@ ${openStates
   .join('\n')}
           </ul>
         </div>`.replace('type="search"', 'type="search" data-finder-input');
+
+// Homepage entry point: one tile per state, deep-linking into the Locations
+// finder with that state pre-selected. Keeps the ten-card grid on one page.
+export const stateTiles = (stores) => {
+  const groups = [...new Set(stores.map((s) => s.state))].map((st) => ({
+    st,
+    list: stores.filter((s) => s.state === st),
+  }));
+  return `<ul class="state-grid">
+${groups
+  .map(
+    (g, i) => `            <li class="state-tile" data-reveal style="--i:${i % 4}">
+              <a href="locations.html#${g.st}">
+                <span class="state-abbr">${g.st}</span>
+                <span class="state-name">${states[g.st]}</span>
+                <span class="state-count">${g.list.length} ${g.list.length === 1 ? 'store' : 'stores'}</span>
+                <span class="state-cities">${g.list.map((s) => esc(s.city)).join(' &middot; ')}</span>
+              </a>
+            </li>`
+  )
+  .join('\n')}
+          </ul>`;
+};
 
 export const bar = (row, accent = false) => {
   const max = row.max || 100;

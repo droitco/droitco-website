@@ -1731,6 +1731,20 @@ body.sheet {
   .store-figure {
     aspect-ratio: 2 / 1;
   }
+  /* Seven states stacked is a long scroll; two-up keeps them thumb-reachable. */
+  .state-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .state-tile a {
+    padding: var(--sp-2) var(--sp-3) var(--sp-3);
+  }
+  .state-abbr {
+    font-size: 1.35rem;
+  }
+  .state-cities {
+    display: none;
+  }
   .store-body {
     padding: var(--sp-2) var(--sp-3) var(--sp-3);
   }
@@ -1780,4 +1794,89 @@ body.sheet {
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
+}
+
+/* ---------- State tiles (homepage entry to Locations) ---------- */
+.state-grid {
+  display: grid;
+  gap: var(--sp-2);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  margin: var(--sp-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.state-tile a {
+  display: grid;
+  gap: 0.15rem;
+  height: 100%;
+  padding: var(--sp-3);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+  text-decoration: none;
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease), border-color 0.28s var(--ease);
+}
+.state-tile a:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-2);
+  border-color: var(--line-strong);
+}
+.state-abbr {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--signal);
+}
+.state-name {
+  font-weight: 600;
+  color: var(--navy-900);
+}
+.state-count {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.state-cities {
+  margin-top: 0.2rem;
+  font-size: 0.83rem;
+  color: var(--slate);
+  line-height: 1.4;
+}
+
+/* Offer cards on a light ground (the Owners hub) */
+.offer-light {
+  border-color: var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow-1);
+}
+.offer-light:hover {
+  background: var(--surface);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-2);
+}
+.offer-light h3 a {
+  color: var(--navy-900);
+}
+.offer-light p {
+  color: var(--slate);
+}
+.offer-light .offer-more {
+  color: var(--signal-600);
+}
+
+/* A colour band always keeps its own vertical rhythm, even when it directly
+   follows another .section (which would otherwise zero its top padding). */
+.section + .band,
+.section + .band-soft,
+.band + .section,
+.band-soft + .section {
+  padding-top: var(--sp-6);
+}
+
+.footer-h2-gap {
+  margin-top: var(--sp-3);
 }

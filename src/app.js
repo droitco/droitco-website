@@ -113,6 +113,14 @@
     var empty = document.querySelector('[data-finder-empty]');
     var state = 'all';
 
+    // locations.html#WI arrives from the homepage state tiles. Re-read on
+    // hashchange too, or a second state link on an already-loaded page is ignored.
+    var stateFromHash = function () {
+      var h = (location.hash || '').replace('#', '').toUpperCase();
+      return h && finder.querySelector('[data-state="' + h + '"]') ? h : 'all';
+    };
+    state = stateFromHash();
+
     var apply = function () {
       var q = (input.value || '').trim().toLowerCase();
       var shown = 0;
@@ -141,15 +149,29 @@
         apply();
       });
     }
+    var syncFilters = function () {
+      Array.prototype.forEach.call(filters, function (b) {
+        b.setAttribute('aria-pressed', String(b.getAttribute('data-state') === state));
+      });
+      apply();
+    };
+
     Array.prototype.forEach.call(filters, function (btn) {
       btn.addEventListener('click', function () {
         state = btn.getAttribute('data-state');
-        Array.prototype.forEach.call(filters, function (b) {
-          b.setAttribute('aria-pressed', String(b === btn));
-        });
-        apply();
+        syncFilters();
+        // Keep the URL shareable: /locations.html#TX reproduces this view.
+        try {
+          history.replaceState(null, '', state === 'all' ? location.pathname : '#' + state);
+        } catch (err) {}
       });
     });
-    apply();
+
+    window.addEventListener('hashchange', function () {
+      state = stateFromHash();
+      syncFilters();
+    });
+
+    syncFilters();
   }
 })();

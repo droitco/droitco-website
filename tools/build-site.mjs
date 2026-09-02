@@ -11,7 +11,7 @@ const {
   site, nav, states, stores, builds, industry, managementModules, smsConsent, openStates, mapsUrl,
 } = await import('../src/data.js');
 const T = await import('../src/templates.js');
-const { layout, picture, storeCard, finder, bar, esc, lqip, ICON } = T;
+const { layout, picture, storeCard, finder, stateTiles, bar, esc, lqip, ICON } = T;
 
 const images = JSON.parse(await readFile(src('images.json'), 'utf8'));
 const today = new Date().toISOString().slice(0, 10);
@@ -104,7 +104,7 @@ const smsSection = (id = 'sms-opt-in') => `      <section class="section" id="${
         <h1 data-reveal style="--i:1">Storage that never closes.</h1>
         <p data-reveal style="--i:2">Ten stores across seven states. Drive-up units and outdoor parking, rented online, with gate access any hour of the day or night.</p>
         <div class="btn-row" data-reveal style="--i:3">
-          <a class="btn btn-accent" href="#find">Find a location ${ICON.arrow}</a>
+          <a class="btn btn-accent" href="locations.html">Find a location ${ICON.arrow}</a>
           <a class="btn btn-outline-light" href="tel:${site.phone.tel}">${ICON.phone} ${site.phone.display}</a>
         </div>
         <ul class="chips" data-reveal style="--i:4">
@@ -117,13 +117,12 @@ const smsSection = (id = 'sms-opt-in') => `      <section class="section" id="${
 
   const main = `      <section class="section" id="find">
         <div class="wrap">
-          ${finder(openStates)}
-          <ul class="store-grid" data-store-grid style="margin-top:var(--sp-4)">
-${stores.map((s, i) => '            ' + storeCard(images, s, i)).join('\n')}
-          </ul>
-          <div class="finder-empty" data-finder-empty>
-            <p><strong>No store matches that search.</strong></p>
-            <p class="micro">Try a city or state name, or call ${site.phone.display} and we will point you at the closest store.</p>
+          <p class="eyebrow" data-reveal>Find storage</p>
+          <h2 class="h-md" data-reveal>Ten stores in seven states.</h2>
+          <p class="lede" data-reveal>Pick your state to see the stores near you. Every one of them is open and renting today.</p>
+          ${stateTiles(stores)}
+          <div class="btn-row" data-reveal>
+            <a class="btn" href="locations.html">See all ten locations ${ICON.arrow}</a>
           </div>
         </div>
       </section>
@@ -135,7 +134,7 @@ ${stores.map((s, i) => '            ' + storeCard(images, s, i)).join('\n')}
           <ol class="steps">
             <li class="step" data-reveal style="--i:0">
               <h3>Pick a store</h3>
-              <p>Choose the location closest to you and see what is available — drive-up units, and outdoor parking at some stores.</p>
+              <p>Choose the location closest to you and see what is available &mdash; drive-up units, and outdoor parking at some stores.</p>
             </li>
             <li class="step" data-reveal style="--i:1">
               <h3>Rent online</h3>
@@ -149,11 +148,33 @@ ${stores.map((s, i) => '            ' + storeCard(images, s, i)).join('\n')}
         </div>
       </section>
 
+      <section class="band-soft section">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>What you get</p>
+          <h2 class="h-md" data-reveal>Run by the company that built them.</h2>
+          <p class="lede" data-reveal>We are not a listing site. We develop, build, and operate these stores ourselves, which is why the details stay right.</p>
+          <ol class="steps">
+            <li class="step" data-reveal style="--i:0">
+              <h3>Access on your schedule</h3>
+              <p>Every open store is 24/7. Nights, weekends, and holidays included, with no office hours to work around.</p>
+            </li>
+            <li class="step" data-reveal style="--i:1">
+              <h3>Drive up to the door</h3>
+              <p>Ground-level drive-up units at every store, plus outdoor parking for vehicles and trailers where the site allows.</p>
+            </li>
+            <li class="step" data-reveal style="--i:2">
+              <h3>One number, real people</h3>
+              <p>Each store has its own local number, and <a href="tel:${site.phone.tel}">${site.phone.display}</a> reaches us for anything on any of them.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
       <section class="band">
         <div class="wrap">
-          <p class="eyebrow" data-reveal>Owners and investors</p>
+          <p class="eyebrow" data-reveal>Own a facility?</p>
           <h2 class="h-md" data-reveal>We fill units, run stores, and build new ones.</h2>
-          <p class="lede" data-reveal>Three ways we work with owners. Terms are by written agreement, and you stay the landlord on every one of them.</p>
+          <p class="lede" data-reveal>Three ways we work with owners. You stay the landlord on every one of them, and terms are by written agreement.</p>
           <div class="offer-grid">
             <article class="offer" data-reveal style="--i:0">
               <h3><a href="booking.html">Booking</a></h3>
@@ -166,10 +187,13 @@ ${stores.map((s, i) => '            ' + storeCard(images, s, i)).join('\n')}
               <span class="offer-more">Run my store ${ICON.arrow}</span>
             </article>
             <article class="offer" data-reveal style="--i:2">
-              <h3><a href="builds.html">Builds</a></h3>
+              <h3><a href="builds.html">Development</a></h3>
               <p>Site through opening, then we stay and operate it. Every project is planned as a store that rents, not a drawing.</p>
               <span class="offer-more">Develop a site ${ICON.arrow}</span>
             </article>
+          </div>
+          <div class="btn-row" data-reveal>
+            <a class="btn btn-light" href="owners.html">Compare all three ${ICON.arrow}</a>
           </div>
         </div>
       </section>
@@ -409,7 +433,7 @@ ${others
         </div>
       </section>
 
-      <section class="section split-wrap">
+      <section class="section">
         <div class="wrap split">
           <div data-reveal>
             <p class="eyebrow">Renter channel</p>
@@ -417,49 +441,25 @@ ${others
             <p>Renters find the unit through GetSelfStorageNow and the Google, Maps, and store-site channels we already operate on our own facilities. Nothing experimental gets tried on your store first.</p>
           </div>
           <div data-reveal style="--i:1">
-            <p class="eyebrow">Proof</p>
-            <h2 class="h-sm">Facilities we already run.</h2>
-            <p>We operate ten self-storage stores across seven states, and we book vacant units the same way at every one of them. <a href="locations.html">See the portfolio</a>.</p>
+            <p class="eyebrow">To start</p>
+            <h2 class="h-sm">Three things from you.</h2>
+            <p>A written wholesale net, a current list of what is vacant, and a way to confirm a move-in. We handle the listing, the enquiries, and the renter from there.</p>
           </div>
         </div>
       </section>
 
       <section class="band-soft section">
         <div class="wrap">
-          <p class="caption" data-reveal>${industry.label}</p>
-          <h2 class="h-md" data-reveal>Demand is local, and it is still growing.</h2>
-          <p class="lede" data-reveal>Storage is a national asset class with a local lease. Most renters start online. Most will not drive far. That is the market we fill against.</p>
-          <ul class="stat-grid">
-${industry.stats
-  .map(
-    (s, i) => `            <li class="stat" data-reveal style="--i:${i}">
-              <span class="stat-num" data-count="${s.value}${s.unit}">${s.value}${s.unit}</span>
-              <p class="stat-label">${esc(s.label)}</p>
-              <p class="stat-src">${esc(s.source)}</p>
-            </li>`
-  )
-  .join('\n')}
-          </ul>
-          <div class="chart-grid">
-            <div class="panel" data-reveal>
-              <h3>${industry.households.title}</h3>
-${industry.households.rows.map((r) => bar(r)).join('\n')}
-              <p class="chart-note">${esc(industry.households.note)}</p>
-            </div>
-            <div class="panel" data-reveal style="--i:1">
-              <h3>${industry.discovery.title}</h3>
-${industry.discovery.rows.map((r) => bar(r, true)).join('\n')}
-              <p class="chart-note">${esc(industry.discovery.note)}</p>
-            </div>
-          </div>
-          <p class="chart-note">${esc(industry.footnote)}</p>
+          <p class="eyebrow" data-reveal>Before you decide</p>
+          <h2 class="h-md" data-reveal>The market case is on the Owners page.</h2>
+          <p class="lede" data-reveal>Third-party demand and discovery data &mdash; who rents, how far they travel, and where they start looking &mdash; sits on <a href="owners.html#market">Owners</a> so it stays in one place instead of being repeated on every tab.</p>
         </div>
       </section>
 
       <section class="section">
         <div class="wrap">
           <p class="eyebrow" data-reveal>Not this offer</p>
-          <h2 class="h-md" data-reveal>Management is a separate tab.</h2>
+          <h2 class="h-md" data-reveal>Management is separate.</h2>
           <p class="lede" data-reveal>Inbound, collections, gates, liens, the store website, and the monthly recap live on <a href="management.html">Management</a>. Stack them only if you want us on comms and access. Fill-only booking does not include those modules.</p>
           <div class="btn-row" data-reveal>
             <a class="btn btn-accent" href="tel:${site.phone.tel}">${ICON.phone} ${site.phone.display}</a>
@@ -524,6 +524,7 @@ ${industry.discovery.rows.map((r) => bar(r, true)).join('\n')}
         <div class="wrap">
           <p class="eyebrow" data-reveal>Modules</p>
           <h2 class="h-md" data-reveal>What we run. What you keep.</h2>
+          <p class="lede" data-reveal>Take one module, take a few, or hand us the whole store. Whatever you take, you still approve refunds, legal work, and anything that spends money.</p>
           <ol class="modules">
 ${managementModules
   .map(
@@ -541,61 +542,17 @@ ${managementModules
       </section>
 
       <section class="band-soft section">
-        <div class="wrap">
-          <p class="caption" data-reveal>${industry.label}</p>
-          <h2 class="h-md" data-reveal>Professional ops win on Google, then at the gate.</h2>
-          <p class="lede" data-reveal>Self storage is a twenty-minute business. The Map Pack is where the lease starts. Professionally run portfolios still post the highest occupancy in the CMBS set.</p>
-          <div class="chart-grid">
-            <div class="panel" data-reveal>
-              <h3>${industry.radius.title}</h3>
-              <div class="donut">
-                <svg viewBox="0 0 120 120" role="img" aria-label="Sixty-nine percent of storage customers travel twenty minutes or less.">
-                  <circle cx="60" cy="60" r="44" fill="none" stroke="#e6e2db" stroke-width="12"/>
-                  <circle class="donut-ring" cx="60" cy="60" r="44" fill="none" stroke="#e1751f" stroke-width="12"
-                          stroke-linecap="round" style="--dash:${dash(industry.radius.percent)}" transform="rotate(-90 60 60)"/>
-                  <text x="60" y="57" text-anchor="middle" font-size="21" font-weight="700" fill="#0b1626" font-family="Inter, system-ui, sans-serif">${industry.radius.percent}%</text>
-                  <text x="60" y="74" text-anchor="middle" font-size="8" fill="#828c9d" font-family="Inter, system-ui, sans-serif">within 20 min</text>
-                </svg>
-                <div>
-${industry.radius.body.map((p) => `                  <p>${esc(p)}</p>`).join('\n')}
-                </div>
-              </div>
-              <p class="chart-note">${esc(industry.radius.note)}</p>
-            </div>
-            <div class="panel" data-reveal style="--i:1">
-              <h3>${industry.occupancy.title}</h3>
-${industry.occupancy.rows.map((r) => bar(r)).join('\n')}
-              <p class="chart-note">${esc(industry.occupancy.note)}</p>
-            </div>
-          </div>
-          <div class="chart-grid" style="margin-top:var(--sp-3)">
-            <div class="panel" data-reveal>
-              <h3>${industry.discovery.title}</h3>
-${industry.discovery.rows.map((r) => bar(r, true)).join('\n')}
-              <p class="chart-note">${esc(industry.discovery.note)}</p>
-            </div>
-            <div class="panel" data-reveal style="--i:1">
-              <h3>Why the listing matters</h3>
-              <p>A Google Business Profile sits above ordinary website results. SSA found 41% of renters start on the internet and 24% arrive specifically through Google and reviews. Flyers, billboards, social, and aggregators combined trail that.</p>
-              <p>We keep name, address, phone, hours, photos, and rent links tight on every store we run, because a wrong pin does not convert.</p>
-              <p class="chart-note">SSA 2023 Demand Study. Local Pack click share is widely reported above organic listings on local queries. We make no claim about a Droit ranking.</p>
-            </div>
-          </div>
-          <p class="chart-note">${esc(industry.footnote)}</p>
-        </div>
-      </section>
-
-      <section class="section">
         <div class="wrap split">
           <div data-reveal>
-            <p class="eyebrow">Stack with booking</p>
-            <h2 class="h-sm">Fill is a separate offer.</h2>
-            <p>Management covers comms, collections, access, liens, and the store website. Filling vacant units lives on the <a href="booking.html">Booking</a> tab. Stack them if you want both. Terms by written agreement.</p>
+            <p class="eyebrow">Where the lease starts</p>
+            <h2 class="h-sm">A wrong pin does not convert.</h2>
+            <p>Most renters start online and will not drive far, so the listing is the storefront. We keep name, address, phone, hours, photos, and rent links tight on every store we run, and we build and host the store site when you take that module.</p>
+            <p>The research behind that &mdash; travel radius, discovery channels, occupancy by operator type &mdash; is on <a href="owners.html#market">Owners</a>.</p>
           </div>
           <div data-reveal style="--i:1">
-            <p class="eyebrow">Proof</p>
-            <h2 class="h-sm">Facilities we already run.</h2>
-            <p>We manage ten self-storage stores across seven states. These are the same modules we run at each of them. <a href="locations.html">See the portfolio</a>.</p>
+            <p class="eyebrow">Not this offer</p>
+            <h2 class="h-sm">Filling vacancies is separate.</h2>
+            <p>Management covers comms, collections, access, liens, and the store website. Putting renters in empty units lives on <a href="booking.html">Booking</a>. Stack them if you want both. Terms by written agreement.</p>
           </div>
         </div>
       </section>
@@ -634,6 +591,327 @@ ${industry.discovery.rows.map((r) => bar(r, true)).join('\n')}
   );
 }
 
+/* ========================== OWNERS HUB ======================== */
+{
+  const dash = (pct) => {
+    const c = 2 * Math.PI * 44;
+    return `${((pct / 100) * c).toFixed(1)} ${c.toFixed(1)}`;
+  };
+
+  const hero = `    <section class="hero hero-sm">
+      <div class="hero-media">
+        ${picture(images, 'eau-claire-clear-space-aerial', {
+          alt: 'Aerial view of a self-storage facility operated by Droit',
+          sizes: '100vw',
+          widths: [800, 1200, 1600, 1920],
+          priority: true,
+          ratio: 16 / 9,
+        })}
+      </div>
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>Owners and investors</p>
+        <h1 data-reveal style="--i:1">You own the store. We do the work you do not want.</h1>
+        <p data-reveal style="--i:2">Three ways to work with us. Take one, stack them, or start a build. You stay the landlord on all of them, and terms are always by written agreement.</p>
+        <div class="btn-row" data-reveal style="--i:3">
+          <a class="btn btn-accent" href="tel:${site.phone.tel}">${ICON.phone} ${site.phone.display}</a>
+          <a class="btn btn-outline-light" href="#which">Which one am I? ${ICON.arrow}</a>
+        </div>
+      </div>
+    </section>`;
+
+  const main = `      <section class="section" id="which">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>Start here</p>
+          <h2 class="h-md" data-reveal>Which one are you?</h2>
+          <dl class="rows" data-reveal>
+            <div>
+              <dt>Empty units</dt>
+              <dd>Your store runs fine, you just want the vacancies filled. That is <a href="booking.html">Booking</a> &mdash; we sell your units as your agent, and you keep the lease.</dd>
+            </div>
+            <div>
+              <dt>No time</dt>
+              <dd>The store is full enough but the phone, the past-dues, and the gate are eating you. That is <a href="management.html">Management</a> &mdash; six modules, take what you need.</dd>
+            </div>
+            <div>
+              <dt>Both</dt>
+              <dd>Stack them. We run the store and fill it. One conversation, one written agreement.</dd>
+            </div>
+            <div>
+              <dt>Land or a project</dt>
+              <dd>You have a site, or a store that needs building. That is <a href="builds.html">Development</a> &mdash; and we operate it after it opens.</dd>
+            </div>
+          </dl>
+          <div class="offer-grid" style="margin-top:var(--sp-5)">
+            <article class="offer offer-light" data-reveal style="--i:0">
+              <h3><a href="booking.html">Booking</a></h3>
+              <p>Written wholesale net, fill only, no listing fee. We are paid when a renter moves in.</p>
+              <span class="offer-more">See the terms ${ICON.arrow}</span>
+            </article>
+            <article class="offer offer-light" data-reveal style="--i:1">
+              <h3><a href="management.html">Management</a></h3>
+              <p>Inbound, collections, gates, liens, the store website, and a monthly recap.</p>
+              <span class="offer-more">See the modules ${ICON.arrow}</span>
+            </article>
+            <article class="offer offer-light" data-reveal style="--i:2">
+              <h3><a href="builds.html">Development</a></h3>
+              <p>Site selection through opening, then we stay on as the operator.</p>
+              <span class="offer-more">See the approach ${ICON.arrow}</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band section">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>What does not change</p>
+          <h2 class="h-md" data-reveal>The terms that hold on every deal.</h2>
+          <div class="offer-grid">
+            <article class="offer" data-reveal style="--i:0">
+              <h3>You stay the landlord</h3>
+              <p>The lease is yours and stays yours. We never rent in our own name, on any of the three.</p>
+            </article>
+            <article class="offer" data-reveal style="--i:1">
+              <h3>You approve the spend</h3>
+              <p>Refunds, legal work, and anything that costs money come back to you before it happens.</p>
+            </article>
+            <article class="offer" data-reveal style="--i:2">
+              <h3>In writing, first</h3>
+              <p>Every engagement is a written agreement. Nothing on this site is an offer, a quote, or a promise of a result.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>Proof</p>
+          <h2 class="h-md" data-reveal>We run these ourselves.</h2>
+          <p class="lede" data-reveal>Ten self-storage stores across seven states, on the same modules and the same channels we are describing here. Nothing gets tried on your store first. <a href="locations.html">See the portfolio</a>.</p>
+          <ul class="stat-grid">
+            <li class="stat" data-reveal style="--i:0"><span class="stat-num" data-count="10">10</span><p class="stat-label">Stores open and renting</p></li>
+            <li class="stat" data-reveal style="--i:1"><span class="stat-num" data-count="7">7</span><p class="stat-label">States with an operating store</p></li>
+            <li class="stat" data-reveal style="--i:2"><span class="stat-num" data-count="24">24</span><p class="stat-label">Hour access at every open store</p></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="band-soft section" id="market">
+        <div class="wrap">
+          <p class="caption" data-reveal>${industry.label}</p>
+          <h2 class="h-md" data-reveal>The market we are filling against.</h2>
+          <p class="lede" data-reveal>Storage is a national asset class with a local lease. Most renters start online, and most will not drive far. These are third-party figures about the industry, not a forecast for your property.</p>
+          <ul class="stat-grid">
+${industry.stats
+  .map(
+    (st, i) => `            <li class="stat" data-reveal style="--i:${i}">
+              <span class="stat-num" data-count="${st.value}${st.unit}">${st.value}${st.unit}</span>
+              <p class="stat-label">${esc(st.label)}</p>
+              <p class="stat-src">${esc(st.source)}</p>
+            </li>`
+  )
+  .join('\n')}
+          </ul>
+          <div class="chart-grid">
+            <div class="panel" data-reveal>
+              <h3>${industry.radius.title}</h3>
+              <div class="donut">
+                <svg viewBox="0 0 120 120" role="img" aria-label="Sixty-nine percent of storage customers travel twenty minutes or less.">
+                  <circle cx="60" cy="60" r="44" fill="none" stroke="#e6e2db" stroke-width="12"/>
+                  <circle class="donut-ring" cx="60" cy="60" r="44" fill="none" stroke="#e1751f" stroke-width="12"
+                          stroke-linecap="round" style="--dash:${dash(industry.radius.percent)}" transform="rotate(-90 60 60)"/>
+                  <text x="60" y="57" text-anchor="middle" font-size="21" font-weight="700" fill="#0b1626" font-family="Inter, system-ui, sans-serif">${industry.radius.percent}%</text>
+                  <text x="60" y="74" text-anchor="middle" font-size="8" fill="#828c9d" font-family="Inter, system-ui, sans-serif">within 20 min</text>
+                </svg>
+                <div>
+${industry.radius.body.map((t) => `                  <p>${esc(t)}</p>`).join('\n')}
+                </div>
+              </div>
+              <p class="chart-note">${esc(industry.radius.note)}</p>
+            </div>
+            <div class="panel" data-reveal style="--i:1">
+              <h3>${industry.discovery.title}</h3>
+${industry.discovery.rows.map((rw) => bar(rw, true)).join('\n')}
+              <p class="chart-note">${esc(industry.discovery.note)}</p>
+            </div>
+          </div>
+          <div class="chart-grid" style="margin-top:var(--sp-3)">
+            <div class="panel" data-reveal>
+              <h3>${industry.households.title}</h3>
+${industry.households.rows.map((rw) => bar(rw)).join('\n')}
+              <p class="chart-note">${esc(industry.households.note)}</p>
+            </div>
+            <div class="panel" data-reveal style="--i:1">
+              <h3>${industry.occupancy.title}</h3>
+${industry.occupancy.rows.map((rw) => bar(rw)).join('\n')}
+              <p class="chart-note">${esc(industry.occupancy.note)}</p>
+            </div>
+          </div>
+          <p class="chart-note">${esc(industry.footnote)}</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>Next</p>
+          <h2 class="h-md" data-reveal>Start with a call.</h2>
+          <p class="lede" data-reveal>Tell us what the store is and what is not working. We will say quickly whether it is a fit, and which of the three it is.</p>
+          <div class="btn-row" data-reveal>
+            <a class="btn btn-accent" href="tel:${site.phone.tel}">${ICON.phone} ${site.phone.display}</a>
+            <a class="btn btn-ghost" href="booking-sheet.html">Booking one-pager</a>
+            <a class="btn btn-ghost" href="management-sheet.html">Management one-pager</a>
+          </div>
+        </div>
+      </section>`;
+
+  await emit(
+    'owners.html',
+    layout({
+      slug: 'owners',
+      title: 'For Storage Owners | Droit',
+      description:
+        'Three ways we work with self-storage owners: filling vacant units, running the store, and building new ones. You stay the landlord. Call (888) 711-6050.',
+      hero,
+      main,
+      stores,
+      jsonld: {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Owner services',
+        serviceType: 'Self-storage booking, management, and development',
+        provider: { '@id': `${site.origin}/#organization` },
+        areaServed: 'US',
+        description: 'Vacancy booking, property management, and development for self-storage owners.',
+      },
+    })
+  );
+}
+
+/* ============================ ABOUT =========================== */
+{
+  const byState = openStates
+    .map((st) => ({ st, list: stores.filter((x) => x.state === st) }))
+    .filter((g) => g.list.length);
+
+  const hero = `    <section class="hero hero-sm">
+      <div class="hero-media">
+        ${picture(images, 'river-falls', {
+          alt: 'Aerial view of a self-storage facility operated by Droit',
+          sizes: '100vw',
+          widths: [800, 1200, 1600, 1920],
+          priority: true,
+          ratio: 16 / 9,
+        })}
+      </div>
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>About</p>
+        <h1 data-reveal style="--i:1">We build storage, then we run it.</h1>
+        <p data-reveal style="--i:2">Droit develops, builds, operates, and manages self storage. Ten stores are open across seven states, and the same crew that put them up answers the phone.</p>
+        <div class="btn-row" data-reveal style="--i:3">
+          <a class="btn btn-accent" href="locations.html">See the portfolio ${ICON.arrow}</a>
+          <a class="btn btn-outline-light" href="tel:${site.phone.tel}">${ICON.phone} ${site.phone.display}</a>
+        </div>
+      </div>
+    </section>`;
+
+  const main = `      <section class="section">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>By the numbers</p>
+          <h2 class="h-md" data-reveal>An operating record, not a pitch deck.</h2>
+          <ul class="stat-grid">
+            <li class="stat" data-reveal style="--i:0"><span class="stat-num" data-count="10">10</span><p class="stat-label">Stores open and renting</p></li>
+            <li class="stat" data-reveal style="--i:1"><span class="stat-num" data-count="7">7</span><p class="stat-label">States with an operating store</p></li>
+            <li class="stat" data-reveal style="--i:2"><span class="stat-num" data-count="2">2</span><p class="stat-label">Facilities under construction</p></li>
+            <li class="stat" data-reveal style="--i:3"><span class="stat-num" data-count="24">24</span><p class="stat-label">Hour access, every open store</p></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>What we do</p>
+          <h2 class="h-md" data-reveal>Four things, in one company.</h2>
+          <ol class="steps">
+            <li class="step" data-reveal style="--i:0">
+              <h3>Develop</h3>
+              <p>We underwrite sites and plan unit mix, drive lanes, and parking against the local market before anything is poured.</p>
+            </li>
+            <li class="step" data-reveal style="--i:1">
+              <h3>Build</h3>
+              <p>Projects are delivered as operating stores. Nothing is listed for rent until it is genuinely open.</p>
+            </li>
+            <li class="step" data-reveal style="--i:2">
+              <h3>Operate</h3>
+              <p>Leasing, listings, access, and day-to-day operations at every store we own. Renters transact online.</p>
+            </li>
+            <li class="step" data-reveal style="--i:3">
+              <h3>Manage for others</h3>
+              <p>The same operating stack, run on someone else's store. That is <a href="owners.html">Owners</a>.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="band-soft section">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>How we run a store</p>
+          <h2 class="h-md" data-reveal>The standards we hold everywhere.</h2>
+          <dl class="rows" data-reveal>
+            <div><dt>Access</dt><dd>Every open store is 24 hours a day, seven days a week. We do not set an open store back to office hours.</dd></div>
+            <div><dt>Renting</dt><dd>Rentals are completed online on each store's own site, so nobody waits for an office to open.</dd></div>
+            <div><dt>Listings</dt><dd>Name, address, phone, hours, and rent links are kept accurate on every store, because a wrong pin does not convert.</dd></div>
+            <div><dt>Construction</dt><dd>A site under construction is never marketed as open and never carries a rent link. See <a href="builds.html">Development</a>.</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>Where we are</p>
+          <h2 class="h-md" data-reveal>Seven states, ten stores.</h2>
+          <dl class="rows" data-reveal>
+${byState
+  .map(
+    (g) => `            <div>
+              <dt>${states[g.st]}</dt>
+              <dd>${g.list.map((x) => `<a href="${x.slug}.html">${esc(x.name)}</a>, ${esc(x.city)}`).join(' &middot; ')}</dd>
+            </div>`
+  )
+  .join('\n')}
+          </dl>
+          <div class="btn-row" data-reveal>
+            <a class="btn" href="locations.html">Open the location finder ${ICON.arrow}</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>Talk to us</p>
+          <h2 class="h-md" data-reveal>One number for all of it.</h2>
+          <p class="lede" data-reveal>Renting, an existing account, a store you own, or a site you want built &mdash; it all starts at <a href="tel:${site.phone.tel}">${site.phone.display}</a>.</p>
+          <div class="btn-row" data-reveal>
+            <a class="btn btn-accent" href="tel:${site.phone.tel}">${ICON.phone} ${site.phone.display}</a>
+            <a class="btn btn-ghost" href="contact.html">Contact</a>
+          </div>
+        </div>
+      </section>`;
+
+  await emit(
+    'about.html',
+    layout({
+      slug: 'about',
+      title: 'About Droit | Self-Storage Operator',
+      description:
+        'Droit develops, builds, operates, and manages self storage. Ten stores open across seven states, all with 24/7 access. Call (888) 711-6050.',
+      hero,
+      main,
+      stores,
+      ogImage: 'img/river-falls-1200.jpg',
+      jsonld: { '@context': 'https://schema.org', '@type': 'AboutPage', url: `${site.origin}/about.html`, mainEntity: org },
+    })
+  );
+}
+
 /* =========================== BUILDS =========================== */
 {
   const hero = `    <section class="page-head">
@@ -667,22 +945,6 @@ ${industry.discovery.rows.map((r) => bar(r, true)).join('\n')}
               <p>After opening we run leasing, Google listings, and day-to-day ops. Customers rent online, and access is 24/7.</p>
             </li>
           </ol>
-        </div>
-      </section>
-
-      <section class="band">
-        <div class="wrap">
-          <p class="eyebrow" data-reveal>Track record</p>
-          <h2 class="h-md" data-reveal>Ten stores already open.</h2>
-          <p class="lede" data-reveal>Wisconsin, Minnesota, Iowa, Ohio, Tennessee, Texas, and Washington. That operating record sits behind every project we build.</p>
-          <ul class="stat-grid">
-            <li class="stat" data-reveal style="--i:0"><span class="stat-num" data-count="10">10</span><p class="stat-label">Stores open and renting</p></li>
-            <li class="stat" data-reveal style="--i:1"><span class="stat-num" data-count="7">7</span><p class="stat-label">States with an operating store</p></li>
-            <li class="stat" data-reveal style="--i:2"><span class="stat-num" data-count="2">2</span><p class="stat-label">Facilities under construction</p></li>
-          </ul>
-          <div class="btn-row" data-reveal>
-            <a class="btn btn-light" href="locations.html">View all locations ${ICON.arrow}</a>
-          </div>
         </div>
       </section>
 
@@ -1100,9 +1362,11 @@ const urls = [
   { loc: '', pri: '1.0' },
   { loc: 'locations.html', pri: '0.9' },
   ...stores.map((s) => ({ loc: `${s.slug}.html`, pri: '0.8' })),
-  { loc: 'builds.html', pri: '0.7' },
+  { loc: 'owners.html', pri: '0.8' },
   { loc: 'booking.html', pri: '0.7' },
   { loc: 'management.html', pri: '0.7' },
+  { loc: 'builds.html', pri: '0.7' },
+  { loc: 'about.html', pri: '0.7' },
   { loc: 'contact.html', pri: '0.6' },
   { loc: 'privacy.html', pri: '0.3' },
   { loc: 'terms.html', pri: '0.3' },

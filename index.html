@@ -410,9 +410,9 @@
         <nav class="site-nav" id="site-nav" aria-label="Primary">
           <a href="index.html" aria-current="page">Home</a>
           <a href="locations.html">Locations</a>
-          <a href="builds.html">Builds</a>
-          <a href="booking.html">Booking</a>
-          <a href="management.html">Management</a>
+          <a href="owners.html">Owners</a>
+          <a href="builds.html">Development</a>
+          <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
         </nav>
         <a class="header-cta" href="tel:+18887116050"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span>(888) 711-6050</span></a>
@@ -433,7 +433,7 @@
         <h1 data-reveal style="--i:1">Storage that never closes.</h1>
         <p data-reveal style="--i:2">Ten stores across seven states. Drive-up units and outdoor parking, rented online, with gate access any hour of the day or night.</p>
         <div class="btn-row" data-reveal style="--i:3">
-          <a class="btn btn-accent" href="#find">Find a location <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-accent" href="locations.html">Find a location <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-outline-light" href="tel:+18887116050"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg> (888) 711-6050</a>
         </div>
         <ul class="chips" data-reveal style="--i:4">
@@ -446,253 +446,69 @@
     <main id="main">
       <section class="section" id="find">
         <div class="wrap">
-          <div class="finder" data-finder data-reveal>
-          <div class="finder-head">
-            <h2>Find your store</h2>
-            <p class="micro" data-finder-count></p>
-          </div>
-          <div class="finder-search">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-            <label class="visually-hidden" for="store-search">Search stores by city, state, or name</label>
-            <input id="store-search" type="search" data-finder-input autocomplete="off" placeholder="City, state, or store name">
-            <button class="finder-clear" type="button" data-finder-clear aria-label="Clear search">&times;</button>
-          </div>
-          <ul class="filters">
-            <li><button class="filter" type="button" data-state="all" aria-pressed="true">All states</button></li>
-            <li><button class="filter" type="button" data-state="WI" aria-pressed="false">Wisconsin</button></li>
-            <li><button class="filter" type="button" data-state="MN" aria-pressed="false">Minnesota</button></li>
-            <li><button class="filter" type="button" data-state="IA" aria-pressed="false">Iowa</button></li>
-            <li><button class="filter" type="button" data-state="OH" aria-pressed="false">Ohio</button></li>
-            <li><button class="filter" type="button" data-state="TN" aria-pressed="false">Tennessee</button></li>
-            <li><button class="filter" type="button" data-state="TX" aria-pressed="false">Texas</button></li>
-            <li><button class="filter" type="button" data-state="WA" aria-pressed="false">Washington</button></li>
+          <p class="eyebrow" data-reveal>Find storage</p>
+          <h2 class="h-md" data-reveal>Ten stores in seven states.</h2>
+          <p class="lede" data-reveal>Pick your state to see the stores near you. Every one of them is open and renting today.</p>
+          <ul class="state-grid">
+            <li class="state-tile" data-reveal style="--i:0">
+              <a href="locations.html#WI">
+                <span class="state-abbr">WI</span>
+                <span class="state-name">Wisconsin</span>
+                <span class="state-count">4 stores</span>
+                <span class="state-cities">Eau Claire &middot; Eau Claire &middot; River Falls &middot; Mosinee</span>
+              </a>
+            </li>
+            <li class="state-tile" data-reveal style="--i:1">
+              <a href="locations.html#MN">
+                <span class="state-abbr">MN</span>
+                <span class="state-name">Minnesota</span>
+                <span class="state-count">1 store</span>
+                <span class="state-cities">Mankato</span>
+              </a>
+            </li>
+            <li class="state-tile" data-reveal style="--i:2">
+              <a href="locations.html#IA">
+                <span class="state-abbr">IA</span>
+                <span class="state-name">Iowa</span>
+                <span class="state-count">1 store</span>
+                <span class="state-cities">Des Moines</span>
+              </a>
+            </li>
+            <li class="state-tile" data-reveal style="--i:3">
+              <a href="locations.html#OH">
+                <span class="state-abbr">OH</span>
+                <span class="state-name">Ohio</span>
+                <span class="state-count">1 store</span>
+                <span class="state-cities">Dayton</span>
+              </a>
+            </li>
+            <li class="state-tile" data-reveal style="--i:0">
+              <a href="locations.html#TN">
+                <span class="state-abbr">TN</span>
+                <span class="state-name">Tennessee</span>
+                <span class="state-count">1 store</span>
+                <span class="state-cities">Memphis</span>
+              </a>
+            </li>
+            <li class="state-tile" data-reveal style="--i:1">
+              <a href="locations.html#TX">
+                <span class="state-abbr">TX</span>
+                <span class="state-name">Texas</span>
+                <span class="state-count">1 store</span>
+                <span class="state-cities">Odessa</span>
+              </a>
+            </li>
+            <li class="state-tile" data-reveal style="--i:2">
+              <a href="locations.html#WA">
+                <span class="state-abbr">WA</span>
+                <span class="state-name">Washington</span>
+                <span class="state-count">1 store</span>
+                <span class="state-cities">Medical Lake</span>
+              </a>
+            </li>
           </ul>
-        </div>
-          <ul class="store-grid" data-store-grid style="margin-top:var(--sp-4)">
-            <li class="store-card" data-store data-state="WI"
-              data-search="clear space self storage eau claire wi wisconsin 2603 mondovi rd" data-reveal style="--i:0">
-            <figure class="store-figure" style="background-image:url(data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACwAwCdASoYAA0APu1iqU2ppaOiMAgBMB2JQBYdjSwByiPIzF+wAAD+/Ash70M8QP4UVhIy0fIBROn6JCjnLxRIHPX9y68N5zMFF/rSfk9l5gdU0lCXV03cp6wGEdQ/D7iWjpZUuJQXqGhT9VP9sMfpO91KUDnkRwuEwlo84AA=)">
-              <picture>
-        <source type="image/avif" srcset="img/eau-claire-clear-space-400.avif 400w, img/eau-claire-clear-space-800.avif 800w, img/eau-claire-clear-space-1200.avif 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <source type="image/webp" srcset="img/eau-claire-clear-space-400.webp 400w, img/eau-claire-clear-space-800.webp 800w, img/eau-claire-clear-space-1200.webp 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <img src="img/eau-claire-clear-space-800.jpg" srcset="img/eau-claire-clear-space-400.jpg 400w, img/eau-claire-clear-space-800.jpg 800w, img/eau-claire-clear-space-1200.jpg 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw"
-             width="1200" height="750" alt="Clear Space Self Storage in Eau Claire, Wisconsin — facility exterior"
-             loading="lazy" decoding="async">
-      </picture>
-              <span class="badge-open">Open 24/7</span>
-            </figure>
-            <div class="store-body">
-              <p class="store-city">Eau Claire, WI</p>
-              <h3><a href="eau-claire-clear-space.html">Clear Space Self Storage</a></h3>
-              <p class="store-meta">2603 Mondovi Rd<br>(715) 402-4093</p>
-              <div class="store-actions">
-                <a class="btn btn-accent btn-sm" href="https://clearspaceselfstoragewi.com" rel="noopener">Rent online</a>
-                <a class="btn btn-ghost btn-sm" href="eau-claire-clear-space.html">Details</a>
-              </div>
-            </div>
-          </li>
-            <li class="store-card" data-store data-state="WI"
-              data-search="southview mini warehouses eau claire wi wisconsin 4821 london rd 54701" data-reveal style="--i:1">
-            <figure class="store-figure" style="background-image:url(data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACwAwCdASoYAA0APu1iqk2ppaQiMAgBMB2JYwCo9CHOXiLfcAWAAAD8j+idbF2p7paToueCaEObe3ZLjjB9EkNspYjkK+NQvkzPAvopTmFDf/XB2m3dqjVingXVfdQF5ervQ3Rh8vLR8b2LyWQ8AHLhB4Gj4AfiDHXBBM3aSHJVhvCkOxV2sY9AAAA=)">
-              <picture>
-        <source type="image/avif" srcset="img/eau-claire-southview-400.avif 400w, img/eau-claire-southview-800.avif 800w, img/eau-claire-southview-1200.avif 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <source type="image/webp" srcset="img/eau-claire-southview-400.webp 400w, img/eau-claire-southview-800.webp 800w, img/eau-claire-southview-1200.webp 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <img src="img/eau-claire-southview-800.jpg" srcset="img/eau-claire-southview-400.jpg 400w, img/eau-claire-southview-800.jpg 800w, img/eau-claire-southview-1200.jpg 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw"
-             width="1200" height="750" alt="Southview Mini Warehouses in Eau Claire, Wisconsin — aerial view of the drive aisles"
-             loading="lazy" decoding="async">
-      </picture>
-              <span class="badge-open">Open 24/7</span>
-            </figure>
-            <div class="store-body">
-              <p class="store-city">Eau Claire, WI</p>
-              <h3><a href="eau-claire-southview.html">Southview Mini Warehouses</a></h3>
-              <p class="store-meta">4821 London Rd, 54701<br>(715) 333-3148</p>
-              <div class="store-actions">
-                <a class="btn btn-accent btn-sm" href="https://www.southviewstorage.com/" rel="noopener">Rent online</a>
-                <a class="btn btn-ghost btn-sm" href="eau-claire-southview.html">Details</a>
-              </div>
-            </div>
-          </li>
-            <li class="store-card" data-store data-state="WI"
-              data-search="lock tight storage river falls wi wisconsin 1215 old chapman dr 54022" data-reveal style="--i:2">
-            <figure class="store-figure" style="background-image:url(data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAADQAwCdASoYABAAPu1iqU2ppaQiMAgBMB2JZQCdH8ACgfltbr9pvvAA98yPGLsWMESbX/KsntaXGiP5gCKyUwT+5oyfG1Sz2r49r79CpAsjAAWWiybl2hOp9LV8KrLq1d8YVxYnL8RAThDjCYoUGgud0wbLCgjE2Z9MdmzXgZgAAA==)">
-              <picture>
-        <source type="image/avif" srcset="img/river-falls-400.avif 400w, img/river-falls-800.avif 800w, img/river-falls-1200.avif 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <source type="image/webp" srcset="img/river-falls-400.webp 400w, img/river-falls-800.webp 800w, img/river-falls-1200.webp 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <img src="img/river-falls-800.jpg" srcset="img/river-falls-400.jpg 400w, img/river-falls-800.jpg 800w, img/river-falls-1200.jpg 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw"
-             width="1200" height="750" alt="Lock Tight Storage in River Falls, Wisconsin — aerial view of the facility"
-             loading="lazy" decoding="async">
-      </picture>
-              <span class="badge-open">Open 24/7</span>
-            </figure>
-            <div class="store-body">
-              <p class="store-city">River Falls, WI</p>
-              <h3><a href="river-falls.html">Lock Tight Storage</a></h3>
-              <p class="store-meta">1215 Old Chapman Dr, 54022<br>(715) 202-2754</p>
-              <div class="store-actions">
-                <a class="btn btn-accent btn-sm" href="https://www.locktightss.com" rel="noopener">Rent online</a>
-                <a class="btn btn-ghost btn-sm" href="river-falls.html">Details</a>
-              </div>
-            </div>
-          </li>
-            <li class="store-card" data-store data-state="WI"
-              data-search="edgewood storage mosinee wi wisconsin 145900 moon rd 54455" data-reveal style="--i:0">
-            <figure class="store-figure" style="background-image:url(data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACwAwCdASoYAAoAPu1mqk4ppaOiMAgBMB2JQBYdg0TKK5xyhH35MAD+S9v6/TpAvWA9seomSpGesCgrx7VoG1kQHXGDLk0ladt9kqwcNMs7oNO0vMNvjBdOIwARy5IPx3fkw1ZkAAA=)">
-              <picture>
-        <source type="image/avif" srcset="img/mosinee-400.avif 400w, img/mosinee-800.avif 800w, img/mosinee-1200.avif 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <source type="image/webp" srcset="img/mosinee-400.webp 400w, img/mosinee-800.webp 800w, img/mosinee-1200.webp 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <img src="img/mosinee-800.jpg" srcset="img/mosinee-400.jpg 400w, img/mosinee-800.jpg 800w, img/mosinee-1200.jpg 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw"
-             width="1200" height="750" alt="Edgewood Storage in Mosinee, Wisconsin — a row of drive-up units"
-             loading="lazy" decoding="async">
-      </picture>
-              <span class="badge-open">Open 24/7</span>
-            </figure>
-            <div class="store-body">
-              <p class="store-city">Mosinee, WI</p>
-              <h3><a href="mosinee.html">Edgewood Storage</a></h3>
-              <p class="store-meta">145900 Moon Rd, 54455<br>(715) 845-7100</p>
-              <div class="store-actions">
-                <a class="btn btn-accent btn-sm" href="https://edgewoodstoragewi.storageunitsoftware.com/pages/EdgewoodStorage" rel="noopener">Rent online</a>
-                <a class="btn btn-ghost btn-sm" href="mosinee.html">Details</a>
-              </div>
-            </div>
-          </li>
-            <li class="store-card" data-store data-state="MN"
-              data-search="riverfront mini storage mankato mn minnesota 201 w mabel st 56001" data-reveal style="--i:1">
-            <figure class="store-figure" style="background-image:url(data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABQBACdASoYABAAPu1iqk2ppaQiMAgBMB2JQBOmUABbZDGBSLkVZ2re09DAAP7EMq/aZNNlyORZpjf1GIt/2K+aMMFS+agO4yWxTvFk1pbjdaGi6IVoVD0piBqTWvmjqywmHWBH/H3dCECmfERZaLpVQhFIIjUPObeWAY+ns1zxuxU1/KYr4vtZUMDCQPeNKYQAAA==)">
-              <picture>
-        <source type="image/avif" srcset="img/mankato-400.avif 400w, img/mankato-800.avif 800w, img/mankato-1200.avif 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <source type="image/webp" srcset="img/mankato-400.webp 400w, img/mankato-800.webp 800w, img/mankato-1200.webp 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <img src="img/mankato-800.jpg" srcset="img/mankato-400.jpg 400w, img/mankato-800.jpg 800w, img/mankato-1200.jpg 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw"
-             width="1200" height="750" alt="Riverfront Mini Storage in Mankato, Minnesota — aerial view of the drive aisles"
-             loading="lazy" decoding="async">
-      </picture>
-              <span class="badge-open">Open 24/7</span>
-            </figure>
-            <div class="store-body">
-              <p class="store-city">Mankato, MN</p>
-              <h3><a href="mankato.html">Riverfront Mini Storage</a></h3>
-              <p class="store-meta">201 W Mabel St, 56001<br>(715) 845-7100</p>
-              <div class="store-actions">
-                <a class="btn btn-accent btn-sm" href="https://riverfrontministorage.storageunitsoftware.com/" rel="noopener">Rent online</a>
-                <a class="btn btn-ghost btn-sm" href="mankato.html">Details</a>
-              </div>
-            </div>
-          </li>
-            <li class="store-card" data-store data-state="IA"
-              data-search="smart self storage des moines ia iowa 4400 ne 14th st 50313" data-reveal style="--i:2">
-            <figure class="store-figure" style="background-image:url(data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABwBACdASoYABIAPu1kq1AppSOisBgIATAdiWUAuwAPoAAPjZdRE9gMAO0igAD+g/ajNK1VLcmLGjI+ka6O87aoKvdyXCQuIQx66GsDVpfcQUkH8Vy3CuYTTKRo+UZngwNi+QILWPZ3JKNUqaQ/OVTiAyJAAA==)">
-              <picture>
-        <source type="image/avif" srcset="img/des-moines-400.avif 400w, img/des-moines-800.avif 800w, img/des-moines-1200.avif 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <source type="image/webp" srcset="img/des-moines-400.webp 400w, img/des-moines-800.webp 800w, img/des-moines-1200.webp 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <img src="img/des-moines-800.jpg" srcset="img/des-moines-400.jpg 400w, img/des-moines-800.jpg 800w, img/des-moines-1200.jpg 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw"
-             width="1200" height="750" alt="Smart Self Storage in Des Moines, Iowa — drive-up units"
-             loading="lazy" decoding="async">
-      </picture>
-              <span class="badge-open">Open 24/7</span>
-            </figure>
-            <div class="store-body">
-              <p class="store-city">Des Moines, IA</p>
-              <h3><a href="des-moines.html">Smart Self Storage</a></h3>
-              <p class="store-meta">4400 NE 14th St, 50313<br>(515) 882-5226</p>
-              <div class="store-actions">
-                <a class="btn btn-accent btn-sm" href="https://desmoinessmartselfstorage.com" rel="noopener">Rent online</a>
-                <a class="btn btn-ghost btn-sm" href="des-moines.html">Details</a>
-              </div>
-            </div>
-          </li>
-            <li class="store-card" data-store data-state="OH"
-              data-search="smart self storage dayton oh ohio 1764 guenther rd 45417" data-reveal style="--i:0">
-            <figure class="store-figure" style="background-image:url(data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABQBQCdASoYABUAPu1qrFEppaQiqAqpMB2JZwCdABE/tHqFKTGJ3WRslVZji7xpN/8H9eAA/t9DyWFbWYvTs7USTJXJKxWXIialGqmw0NIOZVK8WJ5D3gpU/56Kuc/LgLvCj16fc4xpV9t3Q8YWhNtzUb8m5MpXQZY4MSEnmO6p5av4cgA=)">
-              <picture>
-        <source type="image/avif" srcset="img/dayton-400.avif 400w, img/dayton-800.avif 800w, img/dayton-1200.avif 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <source type="image/webp" srcset="img/dayton-400.webp 400w, img/dayton-800.webp 800w, img/dayton-1200.webp 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <img src="img/dayton-800.jpg" srcset="img/dayton-400.jpg 400w, img/dayton-800.jpg 800w, img/dayton-1200.jpg 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw"
-             width="1200" height="750" alt="Smart Self Storage in Dayton, Ohio — drive aisle between rows of units"
-             loading="lazy" decoding="async">
-      </picture>
-              <span class="badge-open">Open 24/7</span>
-            </figure>
-            <div class="store-body">
-              <p class="store-city">Dayton, OH</p>
-              <h3><a href="dayton.html">Smart Self Storage</a></h3>
-              <p class="store-meta">1764 Guenther Rd, 45417<br>(937) 857-5648</p>
-              <div class="store-actions">
-                <a class="btn btn-accent btn-sm" href="https://www.guntherroadselfstorage.com/" rel="noopener">Rent online</a>
-                <a class="btn btn-ghost btn-sm" href="dayton.html">Details</a>
-              </div>
-            </div>
-          </li>
-            <li class="store-card" data-store data-state="TN"
-              data-search="mallory ave storage memphis tn tennessee 481 e mallory ave" data-reveal style="--i:1">
-            <figure class="store-figure" style="background-image:url(data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADQAwCdASoYABIAPu1krE+ppSQiMBgIATAdiUAVHoGy1MGBmnyPc6AAyydOKd9xuFaPN82FlIv+AQcwuDVzv4BuTTKDxKaauDYjIJtV6+AHA8cIcATCeY9LBEoa0Umua42oX2O4dEK8sK9YqrVaXzGayd6PvZZC5MAAAA==)">
-              <picture>
-        <source type="image/avif" srcset="img/memphis-400.avif 400w, img/memphis-800.avif 800w, img/memphis-1200.avif 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <source type="image/webp" srcset="img/memphis-400.webp 400w, img/memphis-800.webp 800w, img/memphis-1200.webp 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <img src="img/memphis-800.jpg" srcset="img/memphis-400.jpg 400w, img/memphis-800.jpg 800w, img/memphis-1200.jpg 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw"
-             width="1200" height="750" alt="Mallory Ave Storage in Memphis, Tennessee — facility exterior"
-             loading="lazy" decoding="async">
-      </picture>
-              <span class="badge-open">Open 24/7</span>
-            </figure>
-            <div class="store-body">
-              <p class="store-city">Memphis, TN</p>
-              <h3><a href="memphis.html">Mallory Ave Storage</a></h3>
-              <p class="store-meta">481 E Mallory Ave<br>(901) 726-3367</p>
-              <div class="store-actions">
-                <a class="btn btn-accent btn-sm" href="https://malloryavestorage.com" rel="noopener">Rent online</a>
-                <a class="btn btn-ghost btn-sm" href="memphis.html">Details</a>
-              </div>
-            </div>
-          </li>
-            <li class="store-card" data-store data-state="TX"
-              data-search="odessa smart storage odessa tx texas 114 betty lou dr 79766" data-reveal style="--i:2">
-            <figure class="store-figure" style="background-image:url(data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAwBACdASoYAA0APu1iqU2ppaOiMAgBMB2JYwCsAB6Sg5sjsemAJG+ZsGAA+oPD5Uc3nY/InJHyxmCOfbCYcQynuurlnKs0CiPPLShBABw0R1CmCeRHXBpyhsa8Aylo9F8luhAHlnzgu3FZjUcDXKAA)">
-              <picture>
-        <source type="image/avif" srcset="img/odessa-400.avif 400w, img/odessa-800.avif 800w, img/odessa-1200.avif 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <source type="image/webp" srcset="img/odessa-400.webp 400w, img/odessa-800.webp 800w, img/odessa-1200.webp 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <img src="img/odessa-800.jpg" srcset="img/odessa-400.jpg 400w, img/odessa-800.jpg 800w, img/odessa-1200.jpg 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw"
-             width="1200" height="750" alt="Odessa Smart Storage in Odessa, Texas — drive aisle and storage containers"
-             loading="lazy" decoding="async">
-      </picture>
-              <span class="badge-open">Open 24/7</span>
-            </figure>
-            <div class="store-body">
-              <p class="store-city">Odessa, TX</p>
-              <h3><a href="odessa.html">Odessa Smart Storage</a></h3>
-              <p class="store-meta">114 Betty Lou Dr, 79766<br>(432) 200-0595</p>
-              <div class="store-actions">
-                <a class="btn btn-accent btn-sm" href="https://droitllc.ccstorage.com/find_units/loc_ecf4be244345c5992c20c0c1484a782d" rel="noopener">Rent online</a>
-                <a class="btn btn-ghost btn-sm" href="odessa.html">Details</a>
-              </div>
-            </div>
-          </li>
-            <li class="store-card" data-store data-state="WA"
-              data-search="spokane smart storage medical lake wa washington 1605 s fairview heights rd" data-reveal style="--i:0">
-            <figure class="store-figure" style="background-image:url(data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADQBACdASoYABIAPu1qrlCppaQiqAqpMB2JZQC3vAgAlErnUNdwcVF9y6i6NIk+QAD4o7AmHZY8dcWQc/cADfdPwxme6Kj1ogXZBqA4tWuFkAW//yKtQFwH/KDFcn8Bb7I9rWNvknhwZ703lykq0fE/QCpunhue1aacKdhkaWu6p56AHYtfn4kgKYRmAAAA)">
-              <picture>
-        <source type="image/avif" srcset="img/medical-lake-400.avif 400w, img/medical-lake-800.avif 800w, img/medical-lake-1200.avif 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <source type="image/webp" srcset="img/medical-lake-400.webp 400w, img/medical-lake-800.webp 800w, img/medical-lake-1200.webp 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw">
-        <img src="img/medical-lake-800.jpg" srcset="img/medical-lake-400.jpg 400w, img/medical-lake-800.jpg 800w, img/medical-lake-1200.jpg 1200w" sizes="(min-width:1200px) 380px, (min-width:760px) 33vw, 100vw"
-             width="1200" height="750" alt="Spokane Smart Storage in Medical Lake, Washington — the main drive"
-             loading="lazy" decoding="async">
-      </picture>
-              <span class="badge-open">Open 24/7</span>
-            </figure>
-            <div class="store-body">
-              <p class="store-city">Medical Lake, WA</p>
-              <h3><a href="medical-lake.html">Spokane Smart Storage</a></h3>
-              <p class="store-meta">1605 S Fairview Heights Rd<br>(509) 608-3143</p>
-              <div class="store-actions">
-                <a class="btn btn-accent btn-sm" href="https://spokanesmartstorage.com" rel="noopener">Rent online</a>
-                <a class="btn btn-ghost btn-sm" href="medical-lake.html">Details</a>
-              </div>
-            </div>
-          </li>
-          </ul>
-          <div class="finder-empty" data-finder-empty>
-            <p><strong>No store matches that search.</strong></p>
-            <p class="micro">Try a city or state name, or call (888) 711-6050 and we will point you at the closest store.</p>
+          <div class="btn-row" data-reveal>
+            <a class="btn" href="locations.html">See all ten locations <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
       </section>
@@ -704,7 +520,7 @@
           <ol class="steps">
             <li class="step" data-reveal style="--i:0">
               <h3>Pick a store</h3>
-              <p>Choose the location closest to you and see what is available — drive-up units, and outdoor parking at some stores.</p>
+              <p>Choose the location closest to you and see what is available &mdash; drive-up units, and outdoor parking at some stores.</p>
             </li>
             <li class="step" data-reveal style="--i:1">
               <h3>Rent online</h3>
@@ -718,11 +534,33 @@
         </div>
       </section>
 
+      <section class="band-soft section">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>What you get</p>
+          <h2 class="h-md" data-reveal>Run by the company that built them.</h2>
+          <p class="lede" data-reveal>We are not a listing site. We develop, build, and operate these stores ourselves, which is why the details stay right.</p>
+          <ol class="steps">
+            <li class="step" data-reveal style="--i:0">
+              <h3>Access on your schedule</h3>
+              <p>Every open store is 24/7. Nights, weekends, and holidays included, with no office hours to work around.</p>
+            </li>
+            <li class="step" data-reveal style="--i:1">
+              <h3>Drive up to the door</h3>
+              <p>Ground-level drive-up units at every store, plus outdoor parking for vehicles and trailers where the site allows.</p>
+            </li>
+            <li class="step" data-reveal style="--i:2">
+              <h3>One number, real people</h3>
+              <p>Each store has its own local number, and <a href="tel:+18887116050">(888) 711-6050</a> reaches us for anything on any of them.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
       <section class="band">
         <div class="wrap">
-          <p class="eyebrow" data-reveal>Owners and investors</p>
+          <p class="eyebrow" data-reveal>Own a facility?</p>
           <h2 class="h-md" data-reveal>We fill units, run stores, and build new ones.</h2>
-          <p class="lede" data-reveal>Three ways we work with owners. Terms are by written agreement, and you stay the landlord on every one of them.</p>
+          <p class="lede" data-reveal>Three ways we work with owners. You stay the landlord on every one of them, and terms are by written agreement.</p>
           <div class="offer-grid">
             <article class="offer" data-reveal style="--i:0">
               <h3><a href="booking.html">Booking</a></h3>
@@ -735,10 +573,13 @@
               <span class="offer-more">Run my store <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </article>
             <article class="offer" data-reveal style="--i:2">
-              <h3><a href="builds.html">Builds</a></h3>
+              <h3><a href="builds.html">Development</a></h3>
               <p>Site through opening, then we stay and operate it. Every project is planned as a store that rents, not a drawing.</p>
               <span class="offer-more">Develop a site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </article>
+          </div>
+          <div class="btn-row" data-reveal>
+            <a class="btn btn-light" href="owners.html">Compare all three <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
       </section>
@@ -780,7 +621,7 @@
             <p>Self storage with 24/7 access, and the crew that builds and runs it.</p>
           </div>
           <div>
-            <h2>Rent</h2>
+            <h2>Storage</h2>
             <ul>
               <li><a href="locations.html">All locations</a></li>
               <li><a href="eau-claire-clear-space.html">Clear Space Self Storage</a></li>
@@ -803,9 +644,14 @@
           <div>
             <h2>Owners</h2>
             <ul>
+              <li><a href="owners.html">Owner services</a></li>
               <li><a href="booking.html">Booking</a></li>
               <li><a href="management.html">Management</a></li>
-              <li><a href="builds.html">Builds</a></li>
+              <li><a href="builds.html">Development</a></li>
+            </ul>
+            <h2 class="footer-h2-gap">Company</h2>
+            <ul>
+              <li><a href="about.html">About</a></li>
               <li><a href="contact.html">Contact</a></li>
             </ul>
           </div>

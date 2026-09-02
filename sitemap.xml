@@ -61,9 +61,9 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://droitco.com/builds.html</loc>
+    <loc>https://droitco.com/owners.html</loc>
     <lastmod>2026-09-02</lastmod>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://droitco.com/booking.html</loc>
@@ -72,6 +72,16 @@
   </url>
   <url>
     <loc>https://droitco.com/management.html</loc>
+    <lastmod>2026-09-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://droitco.com/builds.html</loc>
+    <lastmod>2026-09-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://droitco.com/about.html</loc>
     <lastmod>2026-09-02</lastmod>
     <priority>0.7</priority>
   </url>
