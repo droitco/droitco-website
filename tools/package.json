@@ -7,6 +7,8 @@
     "images": "node build-images.mjs",
     "site": "node build-site.mjs",
     "check": "node check.mjs",
+    "audit": "node audit.mjs",
+    "serve": "node serve.mjs",
     "preview": "node build-preview.mjs",
     "build": "node build-site.mjs && node check.mjs"
   },

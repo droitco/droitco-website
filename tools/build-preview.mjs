@@ -13,7 +13,7 @@ const PAGES = [
   'index.html', 'locations.html',
   'eau-claire-clear-space.html', 'eau-claire-southview.html', 'river-falls.html', 'mosinee.html',
   'mankato.html', 'des-moines.html', 'dayton.html', 'memphis.html', 'odessa.html', 'medical-lake.html',
-  'owners.html', 'booking.html', 'management.html', 'builds.html', 'about.html', 'contact.html',
+  'owners.html', 'booking.html', 'management.html', 'development.html', 'about.html', 'contact.html',
   'booking-sheet.html', 'management-sheet.html',
   'privacy.html', 'terms.html', 'thanks.html', '404.html',
 ];
@@ -90,11 +90,8 @@ for (const file of PAGES) {
   body = body.slice(hEnd + 9);
   body = body.replace(/<script[\s\S]*?<\/script>/g, '');
 
-  // Route internal page links through the hash router; keep in-page anchors.
-  body = body.replace(/href="((?!https?:|tel:|mailto:|#)[a-z0-9/-]+\.html)"/g, 'href="#$1"');
   pages[file] = { cls, body: body.trim() };
 }
-header = header.replace(/href="((?!https?:|tel:|mailto:|#)[a-z0-9/-]+\.html)"/g, 'href="#$1"');
 
 if (!imgCache.size) throw new Error('no images inlined — run build-images first');
 
@@ -124,11 +121,13 @@ var root = document.getElementById('pv-root');
 
 ${app}
 
-function pageFromHash() {
-  var h = decodeURIComponent(location.hash.replace(/^#/, ''));
-  if (!h) return { page: 'index.html', anchor: '' };
-  if (/\\.html$/.test(h)) return { page: PAGES[h] ? h : '404.html', anchor: '' };
-  return { page: current, anchor: h };
+// The site links extensionlessly (/locations, /locations#WI, /). Map any
+// internal href onto a bundled page.
+function resolvePage(href) {
+  var parts = href.replace(/^\\//, '').split('#');
+  var path = parts[0];
+  var page = path === '' ? 'index.html' : /\\.html$/.test(path) ? path : path + '.html';
+  return { page: PAGES[page] ? page : '404.html', anchor: parts[1] || '' };
 }
 
 var current = 'index.html';
@@ -155,39 +154,44 @@ function render(name, anchor) {
   });
   initDroit();
   if (anchor) {
+    // A state anchor (#WI) drives the real filter button, so the preview
+    // exercises the same code path the live site does.
+    var btn = host.querySelector('[data-state="' + anchor.toUpperCase() + '"]');
+    if (btn) btn.click();
     var t = document.getElementById(anchor);
     if (t) { t.scrollIntoView({ behavior: 'smooth' }); return; }
+    if (btn) { window.scrollTo(0, 0); return; }
   }
   window.scrollTo(0, 0);
 }
 
-// Drive navigation from the click, not from the hash. A fragment change in an
-// about:srcdoc iframe (the mobile frame) reloads the document and loses state,
-// so the hash is only a bookmark we update opportunistically.
+// Every internal link is intercepted, including ones carrying an anchor such
+// as /locations#WI. Anything left unhandled would try to fetch a file that
+// does not exist inside a single-file bundle.
 document.addEventListener('click', function (e) {
-  var a = e.target.closest && e.target.closest('a[href^="#"]');
+  var a = e.target.closest && e.target.closest('a[href]');
   if (!a) return;
-  var target = a.getAttribute('href').slice(1);
-  if (!/\.html$/.test(target)) {
-    var el = document.getElementById(target);
-    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
-    return;
-  }
+  var href = a.getAttribute('href');
+  if (!href || /^(https?:|tel:|mailto:|data:)/.test(href)) return;
+  if (href.charAt(0) === '#') return; // in-page anchor: let the browser do it
   e.preventDefault();
-  render(PAGES[target] ? target : '404.html', '');
-  try { history.pushState(null, '', '#' + target); } catch (err) {}
+  var t = resolvePage(href);
+  render(t.page, t.anchor);
+  // Keep the document URL untouched: this is one file, so changing the URL
+  // would make Back leave the bundle entirely. History state alone drives it.
+  try { history.pushState({ page: t.page, anchor: t.anchor }, ''); } catch (err) {}
 });
 
-window.addEventListener('popstate', function () { render(pageFromHash().page, ''); });
-window.addEventListener('hashchange', function () {
-  var s = pageFromHash();
-  if (s.page !== current) render(s.page, s.anchor);
+window.addEventListener('popstate', function (e) {
+  var st = e.state || { page: 'index.html', anchor: '' };
+  render(PAGES[st.page] ? st.page : 'index.html', st.anchor || '');
 });
 
 var note = document.getElementById('pv-note');
 if (note) note.querySelector('button').addEventListener('click', function () { note.remove(); });
 
-render(pageFromHash().page, '');
+try { history.replaceState({ page: 'index.html', anchor: '' }, ''); } catch (err) {}
+render('index.html', '');
 </script>
 `;
 

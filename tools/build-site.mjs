@@ -17,9 +17,23 @@ const images = JSON.parse(await readFile(src('images.json'), 'utf8'));
 const today = new Date().toISOString().slice(0, 10);
 const written = [];
 
+// GitHub Pages serves /locations for locations.html, so the site links and
+// canonicalises without the extension. The .html forms keep resolving (200),
+// which matters for anything already indexed or filed against them.
+const cleanUrls = (html) =>
+  html
+    // absolute URLs in canonical, og:url, and JSON-LD
+    .replace(/(https:\/\/droitco\.com\/)index\.html/g, '$1')
+    .replace(/(https:\/\/droitco\.com\/[a-z0-9/-]+)\.html/g, '$1')
+    // local links: index -> /, everything else drops .html, anchors preserved
+    .replace(/\b(href|action)="(?:\.\.\/)?index\.html(#[A-Za-z0-9-]+)?"/g, (m, a, h) => `${a}="/${h || ''}"`)
+    .replace(/\b(href|action)="\/?(?:\.\.\/)([a-z0-9-]+)\.html(#[A-Za-z0-9-]+)?"/g, (m, a, pg, h) => `${a}="/${pg}${h || ''}"`)
+    .replace(/\b(href|action)="\/([a-z0-9-]+)\.html(#[A-Za-z0-9-]+)?"/g, (m, a, pg, h) => `${a}="/${pg}${h || ''}"`)
+    .replace(/\b(href|action)="([a-z0-9-]+)\.html(#[A-Za-z0-9-]+)?"/g, (m, a, pg, h) => `${a}="${pg}${h || ''}"`);
+
 async function emit(name, html) {
   await mkdir(dirname(out(name)), { recursive: true });
-  await writeFile(out(name), html);
+  await writeFile(out(name), name.endsWith('.html') ? cleanUrls(html) : html);
   written.push(name);
 }
 
@@ -187,7 +201,7 @@ const smsSection = (id = 'sms-opt-in') => `      <section class="section" id="${
               <span class="offer-more">Run my store ${ICON.arrow}</span>
             </article>
             <article class="offer" data-reveal style="--i:2">
-              <h3><a href="builds.html">Development</a></h3>
+              <h3><a href="development.html">Development</a></h3>
               <p>Site through opening, then we stay and operate it. Every project is planned as a store that rents, not a drawing.</p>
               <span class="offer-more">Develop a site ${ICON.arrow}</span>
             </article>
@@ -256,7 +270,7 @@ ${byState
   )
   .join('\n')}
           </dl>
-          <p class="lede" style="margin-top:var(--sp-4)" data-reveal>We also develop new facilities. <a href="builds.html">See what is under construction</a>.</p>
+          <p class="lede" style="margin-top:var(--sp-4)" data-reveal>We also develop new facilities. <a href="development.html">See what is under construction</a>.</p>
         </div>
       </section>`;
 
@@ -638,7 +652,7 @@ ${managementModules
             </div>
             <div>
               <dt>Land or a project</dt>
-              <dd>You have a site, or a store that needs building. That is <a href="builds.html">Development</a> &mdash; and we operate it after it opens.</dd>
+              <dd>You have a site, or a store that needs building. That is <a href="development.html">Development</a> &mdash; and we operate it after it opens.</dd>
             </div>
           </dl>
           <div class="offer-grid" style="margin-top:var(--sp-5)">
@@ -653,7 +667,7 @@ ${managementModules
               <span class="offer-more">See the modules ${ICON.arrow}</span>
             </article>
             <article class="offer offer-light" data-reveal style="--i:2">
-              <h3><a href="builds.html">Development</a></h3>
+              <h3><a href="development.html">Development</a></h3>
               <p>Site selection through opening, then we stay on as the operator.</p>
               <span class="offer-more">See the approach ${ICON.arrow}</span>
             </article>
@@ -859,7 +873,7 @@ ${industry.occupancy.rows.map((rw) => bar(rw)).join('\n')}
             <div><dt>Access</dt><dd>Every open store is 24 hours a day, seven days a week. We do not set an open store back to office hours.</dd></div>
             <div><dt>Renting</dt><dd>Rentals are completed online on each store's own site, so nobody waits for an office to open.</dd></div>
             <div><dt>Listings</dt><dd>Name, address, phone, hours, and rent links are kept accurate on every store, because a wrong pin does not convert.</dd></div>
-            <div><dt>Construction</dt><dd>A site under construction is never marketed as open and never carries a rent link. See <a href="builds.html">Development</a>.</dd></div>
+            <div><dt>Construction</dt><dd>A site under construction is never marketed as open and never carries a rent link. See <a href="development.html">Development</a>.</dd></div>
           </dl>
         </div>
       </section>
@@ -982,9 +996,9 @@ ${builds
       </section>`;
 
   await emit(
-    'builds.html',
+    'development.html',
     layout({
-      slug: 'builds',
+      slug: 'development',
       title: 'Self-Storage Development | Droit',
       description:
         'We design, build, and operate self-storage facilities, then stay with the property. Ten stores open across seven states. Call (888) 711-6050.',
@@ -1032,7 +1046,7 @@ ${builds
             </li>
             <li class="step" data-reveal style="--i:2">
               <h3>You have land</h3>
-              <p>Development, construction, and operations. Start at <a href="builds.html">Builds</a>.</p>
+              <p>Development, construction, and operations. Start at <a href="development.html">Builds</a>.</p>
             </li>
           </ol>
         </div>
@@ -1333,8 +1347,29 @@ await emit(
   })
 );
 
-/* ============ TRAILING-SLASH REDIRECT SHIMS =================== */
-// /privacy/ and /terms/ used to 404. These keep those URLs alive.
+/* ================= REDIRECT SHIMS ============================= */
+// /privacy/ and /terms/ used to 404. /builds is the page's old URL, kept
+// alive because it is in the live sitemap and Brandon hands it out by name.
+await emit(
+  'builds.html',
+  `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Redirecting | ${site.brand}</title>
+  <link rel="canonical" href="${site.origin}/development">
+  <meta http-equiv="refresh" content="0; url=/development">
+  <script>location.replace("/development");</script>
+</head>
+<body>
+  <p><a href="/development">Continue to Development</a></p>
+</body>
+</html>
+`
+);
+
 for (const slug of ['privacy', 'terms']) {
   await emit(
     `${slug}/index.html`,
@@ -1345,12 +1380,12 @@ for (const slug of ['privacy', 'terms']) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, follow">
   <title>Redirecting | ${site.brand}</title>
-  <link rel="canonical" href="${site.origin}/${slug}.html">
-  <meta http-equiv="refresh" content="0; url=/${slug}.html">
-  <script>location.replace("/${slug}.html");</script>
+  <link rel="canonical" href="${site.origin}/${slug}">
+  <meta http-equiv="refresh" content="0; url=/${slug}">
+  <script>location.replace("/${slug}");</script>
 </head>
 <body>
-  <p><a href="/${slug}.html">Continue to the ${slug} page</a></p>
+  <p><a href="/${slug}">Continue to the ${slug} page</a></p>
 </body>
 </html>
 `
@@ -1365,7 +1400,7 @@ const urls = [
   { loc: 'owners.html', pri: '0.8' },
   { loc: 'booking.html', pri: '0.7' },
   { loc: 'management.html', pri: '0.7' },
-  { loc: 'builds.html', pri: '0.7' },
+  { loc: 'development.html', pri: '0.7' },
   { loc: 'about.html', pri: '0.7' },
   { loc: 'contact.html', pri: '0.6' },
   { loc: 'privacy.html', pri: '0.3' },
@@ -1379,7 +1414,7 @@ await emit(
 ${urls
   .map(
     (u) => `  <url>
-    <loc>${site.origin}/${u.loc}</loc>
+    <loc>${site.origin}/${u.loc.replace(/\.html$/, '')}</loc>
     <lastmod>${today}</lastmod>
     <priority>${u.pri}</priority>
   </url>`

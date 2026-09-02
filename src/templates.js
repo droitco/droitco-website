@@ -94,7 +94,7 @@ ${stores
               <li><a href="${up}owners.html">Owner services</a></li>
               <li><a href="${up}booking.html">Booking</a></li>
               <li><a href="${up}management.html">Management</a></li>
-              <li><a href="${up}builds.html">Development</a></li>
+              <li><a href="${up}development.html">Development</a></li>
             </ul>
             <h2 class="footer-h2-gap">Company</h2>
             <ul>

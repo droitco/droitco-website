@@ -30,6 +30,11 @@ const exists = async (p) => {
   }
 };
 
+// The site links extensionlessly; GitHub Pages resolves /locations to
+// locations.html and /privacy/ to privacy/index.html.
+const resolves = async (p) =>
+  (await exists(p)) || (await exists(p + '.html')) || (await exists(join(p, 'index.html')));
+
 // Rules that must never regress. Each is a real incident from the brief.
 const FORBIDDEN = [
   { re: /odessasmartstorage/i, why: 'Odessa competitor domain (different company)' },
@@ -77,7 +82,7 @@ for (const file of files) {
     if (/^(https?:|tel:|mailto:|data:|#|\/\/)/.test(ref)) continue;
     const clean = ref.split('#')[0].split('?')[0];
     const target = clean.startsWith('/') ? join(ROOT, clean) : normalize(join(base, clean));
-    if (!(await exists(target))) fail(rel, `broken local reference -> ${ref}`);
+    if (!(await resolves(target))) fail(rel, `broken local reference -> ${ref}`);
   }
 
   // srcset entries resolve too
@@ -129,9 +134,13 @@ for (const file of files) {
     fail('index.html', 'A2P: the SMS consent checkbox is missing from the homepage');
   for (const phrase of ['Reply STOP', 'Message and data rates may apply', 'Consent is not a condition'])
     if (!home.includes(phrase)) fail('index.html', `A2P: consent language missing the phrase "${phrase}"`);
-  for (const link of ['privacy.html', 'terms.html']) {
-    if (!new RegExp(`href="${link}"`).test(bottom)) fail('index.html', `A2P: homepage must link to ${link}`);
-    if (!(await exists(join(ROOT, link)))) fail(link, 'A2P: cited in the campaign filing and must stay live');
+  for (const page of ['privacy', 'terms']) {
+    // The filing cites the .html URLs; the site now links the clean ones.
+    // Both must resolve, and the front page must link to the page either way.
+    if (!new RegExp(`href="/?${page}(\\.html)?"`).test(bottom))
+      fail('index.html', `A2P: homepage must link to the ${page} page`);
+    if (!(await exists(join(ROOT, `${page}.html`))))
+      fail(`${page}.html`, 'A2P: cited in the RingCentral filing and must stay live at that exact URL');
   }
 }
 
@@ -139,7 +148,8 @@ for (const file of files) {
 const sitemap = await readFile(join(ROOT, 'sitemap.xml'), 'utf8');
 for (const m of sitemap.matchAll(/<loc>https:\/\/droitco\.com\/([^<]*)<\/loc>/g)) {
   const p = m[1] === '' ? 'index.html' : m[1];
-  if (!(await exists(join(ROOT, p)))) fail('sitemap.xml', `lists a page that does not exist -> ${m[1]}`);
+  if (!(await resolves(join(ROOT, p)))) fail('sitemap.xml', `lists a page that does not exist -> ${m[1]}`);
+  if (/\.html$/.test(m[1])) fail('sitemap.xml', `should list the clean URL, not ${m[1]}`);
 }
 if (!(await exists(join(ROOT, 'CNAME')))) fail('CNAME', 'missing — custom domain would break');
 if (!(await exists(join(ROOT, '.nojekyll')))) fail('.nojekyll', 'missing — Pages may skip files');
