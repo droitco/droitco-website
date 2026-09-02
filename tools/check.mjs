@@ -14,8 +14,9 @@ async function walk(dir, out = []) {
     if (['.git', 'node_modules', 'src', 'tools', 'img'].includes(e.name)) continue;
     const p = join(dir, e.name);
     if (e.isDirectory()) await walk(p, out);
-    // preview-bundle.html is a local build artifact, not a page of the site
-    else if (e.name.endsWith('.html') && e.name !== 'preview-bundle.html') out.push(p);
+    // preview-*.html at the root are local review bundles, not pages of the
+    // site (the preview/ directory is a real page and stays checked).
+    else if (e.name.endsWith('.html') && !/^preview-.*\.html$/.test(e.name)) out.push(p);
   }
   return out;
 }

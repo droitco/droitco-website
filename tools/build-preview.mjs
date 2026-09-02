@@ -96,9 +96,11 @@ for (const file of PAGES) {
 }
 header = header.replace(/href="((?!https?:|tel:|mailto:|#)[a-z0-9/-]+\.html)"/g, 'href="#$1"');
 
-const title = 'DROIT — Site Preview';
 if (!imgCache.size) throw new Error('no images inlined — run build-images first');
-const out = `<title>${title}</title>
+
+const MOBILE = process.argv.includes('--mobile');
+const title = MOBILE ? 'DROIT — Mobile Preview' : 'DROIT — Desktop Preview';
+const site = `<title>${title}</title>
 <style>
 ${css}
 /* --- preview chrome (not part of the site) --- */
@@ -112,7 +114,7 @@ ${css}
 @media print{#pv-note{display:none}}
 </style>
 <div id="pv-root"></div>
-<div id="pv-note"><span><b>Preview</b> &middot; not published</span><button type="button" aria-label="Hide preview badge">&times;</button></div>
+${MOBILE ? '' : '<div id="pv-note"><span><b>Preview</b> &middot; not published</span><button type="button" aria-label="Hide preview badge">&times;</button></div>'}
 <script>
 document.documentElement.className += " js";
 var IMAGES = ${JSON.stringify(Object.fromEntries(imgCache))};
@@ -159,22 +161,112 @@ function render(name, anchor) {
   window.scrollTo(0, 0);
 }
 
-window.addEventListener('hashchange', function () {
-  var s = pageFromHash();
-  if (s.anchor) {
-    var t = document.getElementById(s.anchor);
-    if (t) { t.scrollIntoView({ behavior: 'smooth' }); return; }
+// Drive navigation from the click, not from the hash. A fragment change in an
+// about:srcdoc iframe (the mobile frame) reloads the document and loses state,
+// so the hash is only a bookmark we update opportunistically.
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href^="#"]');
+  if (!a) return;
+  var target = a.getAttribute('href').slice(1);
+  if (!/\.html$/.test(target)) {
+    var el = document.getElementById(target);
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+    return;
   }
-  render(s.page, s.anchor);
+  e.preventDefault();
+  render(PAGES[target] ? target : '404.html', '');
+  try { history.pushState(null, '', '#' + target); } catch (err) {}
 });
 
-document.getElementById('pv-note').querySelector('button')
-  .addEventListener('click', function () { document.getElementById('pv-note').remove(); });
+window.addEventListener('popstate', function () { render(pageFromHash().page, ''); });
+window.addEventListener('hashchange', function () {
+  var s = pageFromHash();
+  if (s.page !== current) render(s.page, s.anchor);
+});
+
+var note = document.getElementById('pv-note');
+if (note) note.querySelector('button').addEventListener('click', function () { note.remove(); });
 
 render(pageFromHash().page, '');
 </script>
 `;
 
-await writeFile(r('preview-bundle.html'), out);
+// Desktop: ship the site as-is and let the artifact viewport be the viewport.
+// Mobile: the same site inside a real 390px iframe, because CSS breakpoints
+// answer to the viewport, not to a narrow container.
+let out;
+let file;
+if (MOBILE) {
+  file = 'preview-mobile.html';
+  // Split head content (title/style) from body content so the framed document
+  // is well-formed rather than relying on the parser to relocate divs.
+  const headEnd = site.indexOf('</style>') + '</style>'.length;
+  const doc =
+    `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">` +
+    `<meta name="viewport" content="width=device-width, initial-scale=1">` +
+    site.slice(0, headEnd) +
+    `</head><body>` + site.slice(headEnd) + `</body></html>`;
+  out = `<title>${title}</title>
+<style>
+  :root{color-scheme:light}
+  body{margin:0;min-height:100svh;display:flex;flex-direction:column;align-items:center;gap:1.1rem;
+    padding:1.6rem 1rem 2rem;background:radial-gradient(70rem 40rem at 50% -10%,#1b3050,#0b1626 70%);
+    font:400 14px/1.5 "Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#cfd8e6}
+  .bar{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;justify-content:center}
+  .seg{display:flex;gap:.2rem;padding:.22rem;border-radius:999px;background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.14)}
+  .seg button{appearance:none;border:0;background:none;color:rgba(255,255,255,.7);cursor:pointer;
+    padding:.4rem .9rem;border-radius:999px;font:600 .78rem/1 inherit;letter-spacing:.04em}
+  .seg button[aria-pressed="true"]{background:#e1751f;color:#fff}
+  .seg button:hover:not([aria-pressed="true"]){color:#fff}
+  .tag{font:700 .68rem/1 inherit;letter-spacing:.14em;text-transform:uppercase;color:#f5b476}
+  .phone{position:relative;border-radius:44px;padding:12px;background:linear-gradient(160deg,#2b3648,#141b28);
+    box-shadow:0 2px 0 rgba(255,255,255,.12) inset,0 40px 90px rgba(0,0,0,.5);flex:none;
+    transition:width .3s cubic-bezier(.22,1,.36,1),height .3s cubic-bezier(.22,1,.36,1)}
+  .phone.tablet{border-radius:28px;padding:14px}
+  iframe{display:block;width:100%;height:100%;border:0;border-radius:33px;background:#fbfaf8}
+  .phone.tablet iframe{border-radius:16px}
+  .hint{font-size:.78rem;color:rgba(255,255,255,.45);text-align:center;max-width:34rem}
+  @media (max-width:520px){body{padding:.8rem .4rem}.phone{transform-origin:top center}}
+</style>
+<div class="bar">
+  <span class="tag">Preview &middot; not published</span>
+  <div class="seg" role="group" aria-label="Device size">
+    <button type="button" data-w="390" data-h="844" aria-pressed="true">Phone</button>
+    <button type="button" data-w="768" data-h="1024" aria-pressed="false">Tablet</button>
+  </div>
+</div>
+<div class="phone" id="frame"><iframe id="site" title="DROIT site preview"></iframe></div>
+<p class="hint">The site renders in a real viewport at this width, so the mobile breakpoints, sticky header, and drawer menu behave exactly as they will on a phone. Scroll and tap inside the frame.</p>
+<script>
+var DOC = ${JSON.stringify(doc).replace(/<\/script/gi, '<\\/script').replace(/<!--/g, '<\\u0021--')};
+var frame = document.getElementById('frame');
+var site = document.getElementById('site');
+function size(w, h) {
+  var scale = Math.min(1, (window.innerWidth - 40) / (w + 24), (window.innerHeight - 150) / (h + 24));
+  frame.style.width = w + 24 + 'px';
+  frame.style.height = h + 24 + 'px';
+  frame.style.transform = scale < 1 ? 'scale(' + scale + ')' : '';
+  frame.classList.toggle('tablet', w > 500);
+}
+var cur = { w: 390, h: 844 };
+document.querySelectorAll('.seg button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.querySelectorAll('.seg button').forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+    cur = { w: +b.dataset.w, h: +b.dataset.h };
+    size(cur.w, cur.h);
+  });
+});
+window.addEventListener('resize', function () { size(cur.w, cur.h); });
+size(cur.w, cur.h);
+site.srcdoc = DOC;
+</script>
+`;
+} else {
+  file = 'preview-desktop.html';
+  out = site;
+}
+
+await writeFile(r(file), out);
 const kb = Buffer.byteLength(out) / 1024;
-console.log(`preview-bundle.html — ${Object.keys(pages).length} pages, ${imgCache.size} images, ${(kb / 1024).toFixed(2)} MB`);
+console.log(`${file} — ${Object.keys(pages).length} pages, ${imgCache.size} images, ${(kb / 1024).toFixed(2)} MB`);

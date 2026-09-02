@@ -1,6 +1,7 @@
 # Local build artifact: the whole site inlined into one file for review.
 # Never commit it — GitHub Pages would serve it at droitco.com/preview-bundle.html.
-preview-bundle.html
+preview-desktop.html
+preview-mobile.html
 
 # Tooling
 tools/node_modules/
