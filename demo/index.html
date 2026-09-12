@@ -21,15 +21,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --brand: #663233;
-      --brand-hover: #4d2526;
-      --promo: #f5d547;
-      --footer: #2b2b2b;
+      --burgundy: #663233;
+      --green: #88bb41;
+      --green-hover: #6fa32e;
+      --footer: #34302f;
       --bg: #ffffff;
-      --surface-2: #f4f4f4;
-      --ink: #2b2b2b;
+      --band: #f3f3f3;
+      --ink: #2c2c2c;
       --muted: #6b6b6b;
-      --line: #e5e5e5;
+      --line: #e4e4e4;
       --white: #ffffff;
       --amber: #f5c518;
       --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -47,9 +47,9 @@
       -webkit-font-smoothing: antialiased;
     }
     img { max-width: 100%; height: auto; display: block; }
-    a { color: var(--brand); }
+    a { color: var(--burgundy); }
     a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--brand);
+      outline: 2px solid var(--green);
       outline-offset: 3px;
     }
     .skip {
@@ -58,7 +58,7 @@
       top: -3.5rem;
       z-index: 200;
       background: var(--white);
-      color: var(--brand);
+      color: var(--burgundy);
       padding: 0.5rem 0.85rem;
       font-weight: 600;
       text-decoration: none;
@@ -71,7 +71,7 @@
 
     .demo-banner {
       background: var(--amber);
-      color: var(--brand);
+      color: var(--burgundy);
       font-size: 0.8rem;
       font-weight: 700;
       text-align: center;
@@ -83,8 +83,8 @@
     .chrome { position: sticky; top: 0; z-index: 60; }
 
     .util {
-      background: var(--brand);
-      color: #e8edf4;
+      background: var(--burgundy);
+      color: #f3e9ea;
       font-size: 0.78rem;
       font-weight: 600;
     }
@@ -93,49 +93,38 @@
       justify-content: space-between;
       align-items: center;
       gap: 0.75rem;
-      padding: 0.4rem 0;
+      padding: 0.42rem 0;
     }
     .util a { color: #fff; text-decoration: none; }
     .util a:hover { text-decoration: underline; }
 
-    .site-header {
-      background: var(--white);
-      border-bottom: 1px solid var(--line);
-    }
+    .site-header { background: var(--white); border-bottom: 1px solid var(--line); }
     .site-header .wrap {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding: 0.85rem 0;
+      padding: 0.9rem 0;
     }
     .brand {
-      color: var(--brand);
+      color: var(--burgundy);
       text-decoration: none;
       font-weight: 800;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       letter-spacing: -0.02em;
       white-space: nowrap;
     }
-    nav[aria-label="Primary"] {
-      display: flex;
-      gap: 1.15rem;
-    }
+    nav[aria-label="Primary"] { display: flex; gap: 1.15rem; }
     nav[aria-label="Primary"] a {
-      color: var(--brand);
+      color: var(--burgundy);
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
-    nav[aria-label="Primary"] a:hover { color: var(--brand); }
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      flex: 0 0 auto;
-    }
+    nav[aria-label="Primary"] a:hover { color: var(--green-hover); }
+
     .btn {
       display: inline-block;
       text-decoration: none;
@@ -143,29 +132,29 @@
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 0.7rem 1.05rem;
-      border-radius: 4px;
+      padding: 0.72rem 1.2rem;
+      border-radius: 999px;
       border: 2px solid transparent;
       line-height: 1.2;
     }
-    .btn-signal {
-      background: var(--brand);
+    .btn-green {
+      background: var(--green);
       color: #fff;
-      border-color: var(--brand);
+      border-color: var(--green);
     }
-    .btn-signal:hover { background: var(--brand-hover); border-color: var(--brand-hover); color: #fff; }
+    .btn-green:hover { background: var(--green-hover); border-color: var(--green-hover); color: #fff; }
     .btn-outline {
       background: transparent;
-      color: var(--brand);
-      border-color: var(--brand);
-    }
-    .btn-outline:hover { background: var(--brand); color: #fff; }
-    .btn-white {
-      background: #fff;
-      color: var(--brand);
+      color: #fff;
       border-color: #fff;
     }
-    .btn-white:hover { background: var(--surface-2); color: var(--brand); }
+    .btn-outline:hover { background: #fff; color: var(--burgundy); }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      justify-content: center;
+    }
 
     .hero {
       position: relative;
@@ -189,12 +178,12 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(43, 20, 21, 0.48);
+      background: rgba(40, 20, 21, 0.5);
     }
     .hero .inner {
       position: relative;
       z-index: 1;
-      width: min(720px, calc(100% - 2.5rem));
+      width: min(740px, calc(100% - 2.5rem));
       padding: 5.5rem 0 5rem;
     }
     .hero h1 {
@@ -205,49 +194,26 @@
       line-height: 1.08;
     }
     .hero .lede {
-      margin: 0 auto 1.4rem;
+      margin: 0 auto 1.45rem;
       max-width: 38rem;
       color: #f3f4f6;
       font-size: 1.08rem;
     }
     .hero .lede a { color: #fff; font-weight: 700; }
-    .promo {
-      position: absolute;
-      right: 7%;
-      bottom: 12%;
-      z-index: 2;
-      width: 7.4rem;
-      height: 7.4rem;
-      background: var(--promo);
-      color: var(--brand);
-      clip-path: polygon(50% 0%, 61% 18%, 82% 12%, 76% 32%, 98% 38%, 80% 50%, 98% 62%, 76% 68%, 82% 88%, 61% 82%, 50% 100%, 39% 82%, 18% 88%, 24% 68%, 2% 62%, 20% 50%, 2% 38%, 24% 32%, 18% 12%, 39% 18%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      line-height: 1.2;
-      padding: 0.7rem;
-    }
 
-    .amenities {
-      background: var(--brand);
-      color: #fff;
-      padding: 3.4rem 0 3.2rem;
-    }
-    .amenities h2 {
-      margin: 0 0 1.6rem;
-      text-align: center;
+    .amenities { background: var(--white); padding: 3.4rem 0 3.2rem; }
+    .amenities h2, .rates h2, .about h2 {
+      margin: 0 0 1.35rem;
+      color: var(--burgundy);
       font-size: clamp(1.5rem, 3vw, 2rem);
       font-weight: 800;
+      text-align: center;
     }
+    .about h2 { text-align: left; }
     .amen-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.4rem 1.6rem;
+      gap: 1rem;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -258,28 +224,26 @@
     @media (min-width: 900px) {
       .amen-grid { grid-template-columns: 1fr 1fr 1fr; }
     }
+    .amen-grid li {
+      border: 1px solid var(--line);
+      background: var(--white);
+      border-radius: 8px;
+      padding: 1.2rem 1.15rem 1.1rem;
+    }
     .amen-grid h3 {
       margin: 0 0 0.35rem;
+      color: var(--burgundy);
       font-size: 1.02rem;
       font-weight: 800;
     }
-    .amen-grid p { margin: 0; color: #c9d0da; font-size: 0.95rem; }
+    .amen-grid p { margin: 0; color: var(--muted); font-size: 0.95rem; }
 
-    .rates {
-      background: var(--surface-2);
-      padding: 3.6rem 0 3.4rem;
-    }
-    .rates h2, .about h2, .cta-band h2 {
-      margin: 0 0 0.45rem;
-      color: var(--brand);
-      font-size: clamp(1.55rem, 3vw, 2.1rem);
-      font-weight: 800;
-    }
-    .cta-band h2 { color: #fff; }
+    .rates { background: var(--band); padding: 3.6rem 0 3.4rem; }
     .note {
-      margin: 0 0 1.3rem;
+      margin: -0.6rem 0 1.3rem;
       color: var(--muted);
       font-size: 0.95rem;
+      text-align: center;
     }
     .size-grid {
       display: grid;
@@ -305,7 +269,7 @@
       gap: 0.2rem;
     }
     .size-card .size {
-      color: var(--brand);
+      color: var(--burgundy);
       font-size: 1.35rem;
       font-weight: 800;
     }
@@ -322,7 +286,7 @@
       text-transform: uppercase;
       color: var(--muted);
     }
-    .size-card .btn { align-self: flex-start; padding: 0.55rem 0.85rem; }
+    .size-card .btn { align-self: flex-start; padding: 0.55rem 0.95rem; }
 
     .about { background: var(--white); padding: 3.6rem 0; }
     .split {
@@ -344,24 +308,30 @@
       aspect-ratio: 4 / 3;
       object-fit: cover;
       border-radius: 8px;
-      background: var(--surface-2);
+      background: var(--band);
     }
 
     .cta-band {
-      background: var(--brand);
+      background: var(--burgundy);
       color: #fff;
       text-align: center;
       padding: 3.2rem 0;
     }
+    .cta-band h2 {
+      margin: 0 0 0.45rem;
+      color: #fff;
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      font-weight: 800;
+    }
     .cta-band p {
       margin: 0 auto 1.2rem;
       max-width: 32rem;
-      color: #c9d0da;
+      color: #f3e9ea;
     }
 
     .site-footer {
       background: var(--footer);
-      color: #c9d0da;
+      color: #cfc9c6;
       padding: 2.4rem 0 1.6rem;
       font-size: 0.92rem;
     }
@@ -374,8 +344,8 @@
     .site-footer p { margin: 0 0 0.4rem; }
     .site-footer a { color: #fff; }
     .endline {
-      background: #1a1a1a;
-      color: #8b93a0;
+      background: #241f1e;
+      color: #9a938f;
       text-align: center;
       font-size: 0.72rem;
       font-weight: 700;
@@ -389,10 +359,8 @@
       nav[aria-label="Primary"] { display: none; }
       .hero { min-height: 26rem; }
       .hero .inner { padding: 3.6rem 0 3.4rem; }
-      .promo { right: 4%; bottom: 6%; width: 6.4rem; height: 6.4rem; font-size: 0.62rem; }
     }
     @media (max-width: 520px) {
-      .header-actions .btn-outline { display: none; }
       .util .wrap { flex-direction: column; align-items: flex-start; }
     }
   </style>
@@ -418,10 +386,7 @@
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
-        <div class="header-actions">
-          <a class="btn btn-outline" href="#contact">My Account</a>
-          <a class="btn btn-signal" href="tel:8887116050">Rent a Unit</a>
-        </div>
+        <a class="btn btn-green" href="tel:8887116050">Call</a>
       </div>
     </header>
   </div>
@@ -437,14 +402,16 @@
     <div class="inner">
       <h1>24/7 Access Storage Units</h1>
       <p class="lede">Example sizes start at a 5&times;5 for $45/mo and go to a 10&times;30 for $185/mo. Gate hours are 24/7. <a href="tel:8887116050">Click to call (888) 711-6050</a> &mdash; renters find this store when they search for storage nearby.</p>
-      <a class="btn btn-white" href="#rates">Rent Now</a>
+      <div class="cta-row">
+        <a class="btn btn-green" href="tel:8887116050">Call</a>
+        <a class="btn btn-outline" href="#rates">See sizes</a>
+      </div>
     </div>
-    <div class="promo" aria-label="Example promo only, demo">Example<br>promo<br>only</div>
   </section>
 
   <section class="amenities" aria-labelledby="amenities-title">
     <div class="wrap">
-      <h2 id="amenities-title">Premium Amenities, Premium Storage</h2>
+      <h2 id="amenities-title">What you get</h2>
       <ul class="amen-grid">
         <li>
           <h3>Drive-Up</h3>
@@ -459,16 +426,16 @@
           <p>Recorded cameras watch the property.</p>
         </li>
         <li>
-          <h3>Power Outlets</h3>
-          <p>Selected units for trickle-charge needs.</p>
-        </li>
-        <li>
           <h3>Tall Roll-Up Doors</h3>
           <p>Extra height for furniture and bulky items.</p>
         </li>
         <li>
-          <h3>Gate Access</h3>
+          <h3>Gated Access</h3>
           <p>Gated entry. Office and help: call anytime.</p>
+        </li>
+        <li>
+          <h3>Easy Online Rent</h3>
+          <p>Call to walk the demo rental flow.</p>
         </li>
       </ul>
     </div>
@@ -484,31 +451,31 @@
             <span class="size">5&times;5</span>
             <span class="price">$45/mo</span>
             <span class="example">Example</span>
-            <a class="btn btn-signal" href="tel:8887116050">Rent now</a>
+            <a class="btn btn-green" href="tel:8887116050">Rent now</a>
           </li>
           <li class="size-card">
             <span class="size">5&times;10</span>
             <span class="price">$65/mo</span>
             <span class="example">Example</span>
-            <a class="btn btn-signal" href="tel:8887116050">Rent now</a>
+            <a class="btn btn-green" href="tel:8887116050">Rent now</a>
           </li>
           <li class="size-card">
             <span class="size">10&times;10</span>
             <span class="price">$95/mo</span>
             <span class="example">Example</span>
-            <a class="btn btn-signal" href="tel:8887116050">Rent now</a>
+            <a class="btn btn-green" href="tel:8887116050">Rent now</a>
           </li>
           <li class="size-card">
             <span class="size">10&times;20</span>
             <span class="price">$145/mo</span>
             <span class="example">Example</span>
-            <a class="btn btn-signal" href="tel:8887116050">Rent now</a>
+            <a class="btn btn-green" href="tel:8887116050">Rent now</a>
           </li>
           <li class="size-card">
             <span class="size">10&times;30</span>
             <span class="price">$185/mo</span>
             <span class="example">Example</span>
-            <a class="btn btn-signal" href="tel:8887116050">Rent now</a>
+            <a class="btn btn-green" href="tel:8887116050">Rent now</a>
           </li>
         </ul>
       </div>
@@ -518,9 +485,9 @@
       <div class="wrap split">
         <div>
           <h2>Easy online rentals</h2>
-          <p class="note">Placeholder store. Call to walk the demo flow.</p>
+          <p class="note" style="text-align:left;margin:0 0 0.4rem">Placeholder store. Call to walk the demo flow.</p>
           <ol class="steps">
-            <li>Pick an example size below or from Rates.</li>
+            <li>Pick an example size from Rates.</li>
             <li>Click Rent now on the unit you want.</li>
             <li>Call <a href="tel:8887116050">(888) 711-6050</a> &mdash; click-to-call.</li>
             <li>Move in when you are ready.</li>
@@ -528,9 +495,9 @@
           </ol>
         </div>
         <img class="about-photo"
-             src="../img/locktight-exterior.jpg"
-             width="2200"
-             height="1467"
+             src="https://uploads.website.storedge.com/26a735aa-0c99-4d83-b04f-7be27b4775e9/locktight-02--medium_05202026113925177.webp"
+             width="500"
+             height="375"
              alt="Outdoor drive-up storage buildings and drive aisle"
              loading="lazy"
              decoding="async">
@@ -542,7 +509,7 @@
     <div class="wrap">
       <h2>Ready to rent?</h2>
       <p>Demo only. Click to call and we will walk the example store.</p>
-      <a class="btn btn-signal" href="tel:8887116050">Call (888) 711-6050</a>
+      <a class="btn btn-green" href="tel:8887116050">Call (888) 711-6050</a>
     </div>
   </section>
 
