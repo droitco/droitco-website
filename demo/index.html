@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Demo Storage | 24/7 Access Storage Units</title>
+  <meta name="description" content="Demo Storage sample landing page by Droit. Example sizes and prices from $45/mo, 24/7 gate access, and click-to-call. Not a live store.">
+  <link rel="canonical" href="https://droitco.com/demo/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Demo Storage">
+  <meta property="og:title" content="Demo Storage | 24/7 Access Storage Units">
+  <meta property="og:description" content="Demo landing page by Droit. Example sizes and prices, 24/7 access, click-to-call. Not a live store.">
+  <meta property="og:url" content="https://droitco.com/demo/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Demo Storage | 24/7 Access Storage Units">
+  <meta name="twitter:description" content="Demo landing page by Droit. Example sizes and prices. Not a live store.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #663233;
+      --brand-hover: #4d2526;
+      --promo: #f5d547;
+      --footer: #2b2b2b;
+      --bg: #ffffff;
+      --surface-2: #f4f4f4;
+      --ink: #2b2b2b;
+      --muted: #6b6b6b;
+      --line: #e5e5e5;
+      --white: #ffffff;
+      --amber: #f5c518;
+      --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 6.5rem; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: var(--sans);
+      font-size: 1.02rem;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--brand); }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 3px;
+    }
+    .skip {
+      position: absolute;
+      left: 0.75rem;
+      top: -3.5rem;
+      z-index: 200;
+      background: var(--white);
+      color: var(--brand);
+      padding: 0.5rem 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .skip:focus { top: 0.75rem; }
+    .wrap {
+      width: min(1120px, calc(100% - 2.5rem));
+      margin: 0 auto;
+    }
+
+    .demo-banner {
+      background: var(--amber);
+      color: var(--brand);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 0.5rem 1rem;
+      line-height: 1.4;
+    }
+    .demo-banner p { margin: 0; }
+
+    .chrome { position: sticky; top: 0; z-index: 60; }
+
+    .util {
+      background: var(--brand);
+      color: #e8edf4;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .util .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.4rem 0;
+    }
+    .util a { color: #fff; text-decoration: none; }
+    .util a:hover { text-decoration: underline; }
+
+    .site-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+    .site-header .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 0;
+    }
+    .brand {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    nav[aria-label="Primary"] {
+      display: flex;
+      gap: 1.15rem;
+    }
+    nav[aria-label="Primary"] a {
+      color: var(--brand);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    nav[aria-label="Primary"] a:hover { color: var(--brand); }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex: 0 0 auto;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.05rem;
+      border-radius: 4px;
+      border: 2px solid transparent;
+      line-height: 1.2;
+    }
+    .btn-signal {
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+    }
+    .btn-signal:hover { background: var(--brand-hover); border-color: var(--brand-hover); color: #fff; }
+    .btn-outline {
+      background: transparent;
+      color: var(--brand);
+      border-color: var(--brand);
+    }
+    .btn-outline:hover { background: var(--brand); color: #fff; }
+    .btn-white {
+      background: #fff;
+      color: var(--brand);
+      border-color: #fff;
+    }
+    .btn-white:hover { background: var(--surface-2); color: var(--brand); }
+
+    .hero {
+      position: relative;
+      min-height: 34rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 45%;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(43, 20, 21, 0.48);
+    }
+    .hero .inner {
+      position: relative;
+      z-index: 1;
+      width: min(720px, calc(100% - 2.5rem));
+      padding: 5.5rem 0 5rem;
+    }
+    .hero h1 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(2.2rem, 5.4vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+    }
+    .hero .lede {
+      margin: 0 auto 1.4rem;
+      max-width: 38rem;
+      color: #f3f4f6;
+      font-size: 1.08rem;
+    }
+    .hero .lede a { color: #fff; font-weight: 700; }
+    .promo {
+      position: absolute;
+      right: 7%;
+      bottom: 12%;
+      z-index: 2;
+      width: 7.4rem;
+      height: 7.4rem;
+      background: var(--promo);
+      color: var(--brand);
+      clip-path: polygon(50% 0%, 61% 18%, 82% 12%, 76% 32%, 98% 38%, 80% 50%, 98% 62%, 76% 68%, 82% 88%, 61% 82%, 50% 100%, 39% 82%, 18% 88%, 24% 68%, 2% 62%, 20% 50%, 2% 38%, 24% 32%, 18% 12%, 39% 18%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.2;
+      padding: 0.7rem;
+    }
+
+    .amenities {
+      background: var(--brand);
+      color: #fff;
+      padding: 3.4rem 0 3.2rem;
+    }
+    .amenities h2 {
+      margin: 0 0 1.6rem;
+      text-align: center;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+    }
+    .amen-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.4rem 1.6rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    @media (min-width: 640px) {
+      .amen-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 900px) {
+      .amen-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .amen-grid h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.02rem;
+      font-weight: 800;
+    }
+    .amen-grid p { margin: 0; color: #c9d0da; font-size: 0.95rem; }
+
+    .rates {
+      background: var(--surface-2);
+      padding: 3.6rem 0 3.4rem;
+    }
+    .rates h2, .about h2, .cta-band h2 {
+      margin: 0 0 0.45rem;
+      color: var(--brand);
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      font-weight: 800;
+    }
+    .cta-band h2 { color: #fff; }
+    .note {
+      margin: 0 0 1.3rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .size-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    @media (min-width: 560px) {
+      .size-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 960px) {
+      .size-grid { grid-template-columns: repeat(5, 1fr); }
+    }
+    .size-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.2rem 1rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .size-card .size {
+      color: var(--brand);
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+    .size-card .price {
+      color: var(--ink);
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+    .size-card .example {
+      margin: 0.35rem 0 0.75rem;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .size-card .btn { align-self: flex-start; padding: 0.55rem 0.85rem; }
+
+    .about { background: var(--white); padding: 3.6rem 0; }
+    .split {
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+    @media (min-width: 800px) {
+      .split { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    }
+    .steps {
+      margin: 1rem 0 0;
+      padding: 0 0 0 1.15rem;
+      color: var(--ink);
+    }
+    .steps li { margin-bottom: 0.45rem; }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 8px;
+      background: var(--surface-2);
+    }
+
+    .cta-band {
+      background: var(--brand);
+      color: #fff;
+      text-align: center;
+      padding: 3.2rem 0;
+    }
+    .cta-band p {
+      margin: 0 auto 1.2rem;
+      max-width: 32rem;
+      color: #c9d0da;
+    }
+
+    .site-footer {
+      background: var(--footer);
+      color: #c9d0da;
+      padding: 2.4rem 0 1.6rem;
+      font-size: 0.92rem;
+    }
+    .site-footer .brand-foot {
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.05rem;
+      margin: 0 0 0.45rem;
+    }
+    .site-footer p { margin: 0 0 0.4rem; }
+    .site-footer a { color: #fff; }
+    .endline {
+      background: #1a1a1a;
+      color: #8b93a0;
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.7rem 1rem;
+    }
+    .endline p { margin: 0; }
+
+    @media (max-width: 800px) {
+      nav[aria-label="Primary"] { display: none; }
+      .hero { min-height: 26rem; }
+      .hero .inner { padding: 3.6rem 0 3.4rem; }
+      .promo { right: 4%; bottom: 6%; width: 6.4rem; height: 6.4rem; font-size: 0.62rem; }
+    }
+    @media (max-width: 520px) {
+      .header-actions .btn-outline { display: none; }
+      .util .wrap { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="chrome">
+    <div class="demo-banner">
+      <p>Demo page by Droit &middot; not a live store &middot; sizes/prices are examples</p>
+    </div>
+    <div class="util">
+      <div class="wrap">
+        <span>24/7 access</span>
+        <a href="tel:8887116050">(888) 711-6050</a>
+      </div>
+    </div>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./">Demo Storage</a>
+        <nav aria-label="Primary">
+          <a href="./">Home</a>
+          <a href="#rates">Rates</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <a class="btn btn-outline" href="#contact">My Account</a>
+          <a class="btn btn-signal" href="tel:8887116050">Rent a Unit</a>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <section class="hero">
+    <img class="hero-bg"
+         src="https://uploads.website.storedge.com/26a735aa-0c99-4d83-b04f-7be27b4775e9/locktight-02--medium_05202026113925177.webp"
+         width="500"
+         height="375"
+         alt="Outdoor drive-up storage buildings"
+         fetchpriority="high"
+         decoding="async">
+    <div class="inner">
+      <h1>24/7 Access Storage Units</h1>
+      <p class="lede">Example sizes start at a 5&times;5 for $45/mo and go to a 10&times;30 for $185/mo. Gate hours are 24/7. <a href="tel:8887116050">Click to call (888) 711-6050</a> &mdash; renters find this store when they search for storage nearby.</p>
+      <a class="btn btn-white" href="#rates">Rent Now</a>
+    </div>
+    <div class="promo" aria-label="Example promo only, demo">Example<br>promo<br>only</div>
+  </section>
+
+  <section class="amenities" aria-labelledby="amenities-title">
+    <div class="wrap">
+      <h2 id="amenities-title">Premium Amenities, Premium Storage</h2>
+      <ul class="amen-grid">
+        <li>
+          <h3>Drive-Up</h3>
+          <p>Unload at the unit door. No long indoor halls.</p>
+        </li>
+        <li>
+          <h3>24/7 Access</h3>
+          <p>Gate hours are open around the clock.</p>
+        </li>
+        <li>
+          <h3>Security Cameras</h3>
+          <p>Recorded cameras watch the property.</p>
+        </li>
+        <li>
+          <h3>Power Outlets</h3>
+          <p>Selected units for trickle-charge needs.</p>
+        </li>
+        <li>
+          <h3>Tall Roll-Up Doors</h3>
+          <p>Extra height for furniture and bulky items.</p>
+        </li>
+        <li>
+          <h3>Gate Access</h3>
+          <p>Gated entry. Office and help: call anytime.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <main id="main">
+    <section class="rates" id="rates">
+      <div class="wrap">
+        <h2>Sizes &amp; prices</h2>
+        <p class="note">Example prices only. Not a live store.</p>
+        <ul class="size-grid">
+          <li class="size-card">
+            <span class="size">5&times;5</span>
+            <span class="price">$45/mo</span>
+            <span class="example">Example</span>
+            <a class="btn btn-signal" href="tel:8887116050">Rent now</a>
+          </li>
+          <li class="size-card">
+            <span class="size">5&times;10</span>
+            <span class="price">$65/mo</span>
+            <span class="example">Example</span>
+            <a class="btn btn-signal" href="tel:8887116050">Rent now</a>
+          </li>
+          <li class="size-card">
+            <span class="size">10&times;10</span>
+            <span class="price">$95/mo</span>
+            <span class="example">Example</span>
+            <a class="btn btn-signal" href="tel:8887116050">Rent now</a>
+          </li>
+          <li class="size-card">
+            <span class="size">10&times;20</span>
+            <span class="price">$145/mo</span>
+            <span class="example">Example</span>
+            <a class="btn btn-signal" href="tel:8887116050">Rent now</a>
+          </li>
+          <li class="size-card">
+            <span class="size">10&times;30</span>
+            <span class="price">$185/mo</span>
+            <span class="example">Example</span>
+            <a class="btn btn-signal" href="tel:8887116050">Rent now</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="wrap split">
+        <div>
+          <h2>Easy online rentals</h2>
+          <p class="note">Placeholder store. Call to walk the demo flow.</p>
+          <ol class="steps">
+            <li>Pick an example size below or from Rates.</li>
+            <li>Click Rent now on the unit you want.</li>
+            <li>Call <a href="tel:8887116050">(888) 711-6050</a> &mdash; click-to-call.</li>
+            <li>Move in when you are ready.</li>
+            <li>Use the gate any time. Access is 24/7.</li>
+          </ol>
+        </div>
+        <img class="about-photo"
+             src="../img/locktight-exterior.jpg"
+             width="2200"
+             height="1467"
+             alt="Outdoor drive-up storage buildings and drive aisle"
+             loading="lazy"
+             decoding="async">
+      </div>
+    </section>
+  </main>
+
+  <section class="cta-band" id="contact">
+    <div class="wrap">
+      <h2>Ready to rent?</h2>
+      <p>Demo only. Click to call and we will walk the example store.</p>
+      <a class="btn btn-signal" href="tel:8887116050">Call (888) 711-6050</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="brand-foot">Demo Storage</p>
+      <p>123 Main St, Your City, WI 00000</p>
+      <p><a href="tel:8887116050">(888) 711-6050</a></p>
+      <p>Sample by Droit &middot; <a href="https://droitco.com">droitco.com</a></p>
+    </div>
+  </footer>
+  <div class="endline">
+    <p>Demo only &middot; Not a live store &middot; Droit</p>
+  </div>
+</body>
+</html>
