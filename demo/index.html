@@ -21,17 +21,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #1a3157;
-      --navy-dark: #0b1626;
-      --navy-800: #0f1e33;
-      --signal: #e1751f;
-      --signal-dark: #bd5c11;
-      --promo: #f5b476;
-      --bg: #fbfaf8;
-      --surface-2: #f4f1ec;
-      --ink: #141c27;
-      --muted: #828c9d;
-      --line: #e6e2db;
+      --burgundy: #663233;
+      --burgundy-hover: #4d2526;
+      --promo: #f5d547;
+      --footer: #2b2b2b;
+      --bg: #ffffff;
+      --surface-2: #f4f4f4;
+      --ink: #2c2c2c;
+      --muted: #6b6b6b;
+      --line: #e5e5e5;
       --white: #ffffff;
       --amber: #f5c518;
       --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -49,9 +47,9 @@
       -webkit-font-smoothing: antialiased;
     }
     img { max-width: 100%; height: auto; display: block; }
-    a { color: var(--navy); }
+    a { color: var(--burgundy); }
     a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--navy);
+      outline: 2px solid var(--burgundy);
       outline-offset: 3px;
     }
     .skip {
@@ -60,7 +58,7 @@
       top: -3.5rem;
       z-index: 200;
       background: var(--white);
-      color: var(--navy);
+      color: var(--burgundy);
       padding: 0.5rem 0.85rem;
       font-weight: 600;
       text-decoration: none;
@@ -73,7 +71,7 @@
 
     .demo-banner {
       background: var(--amber);
-      color: var(--navy);
+      color: var(--burgundy);
       font-size: 0.8rem;
       font-weight: 700;
       text-align: center;
@@ -92,7 +90,7 @@
       padding: 0.85rem 0;
     }
     .brand {
-      color: var(--navy);
+      color: var(--burgundy);
       text-decoration: none;
       font-weight: 800;
       font-size: 1.25rem;
@@ -106,14 +104,14 @@
       justify-content: center;
     }
     nav[aria-label="Primary"] a {
-      color: var(--navy);
+      color: var(--burgundy);
       text-decoration: none;
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    nav[aria-label="Primary"] a:hover { color: var(--navy); }
+    nav[aria-label="Primary"] a:hover { color: var(--burgundy); }
     .header-actions {
       display: flex;
       justify-content: flex-end;
@@ -133,23 +131,23 @@
       line-height: 1.2;
     }
     .btn-solid {
-      background: var(--signal);
+      background: var(--burgundy);
       color: #fff;
-      border-color: var(--signal);
+      border-color: var(--burgundy);
     }
-    .btn-solid:hover { background: var(--signal-dark); border-color: var(--signal-dark); color: #fff; }
+    .btn-solid:hover { background: var(--burgundy-hover); border-color: var(--burgundy-hover); color: #fff; }
     .btn-outline-burg {
       background: transparent;
-      color: var(--navy);
-      border-color: var(--navy);
+      color: var(--burgundy);
+      border-color: var(--burgundy);
     }
-    .btn-outline-burg:hover { background: var(--navy); color: #fff; }
+    .btn-outline-burg:hover { background: var(--burgundy); color: #fff; }
     .btn-white {
       background: #fff;
-      color: var(--navy);
+      color: var(--burgundy);
       border-color: #fff;
     }
-    .btn-white:hover { background: #f4f4f4; color: var(--navy); }
+    .btn-white:hover { background: #f4f4f4; color: var(--burgundy); }
 
     .hero {
       position: relative;
@@ -173,7 +171,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(11, 22, 38, 0.5);
+      background: rgba(43, 20, 21, 0.48);
     }
     .hero .inner {
       position: relative;
@@ -203,7 +201,7 @@
       width: 7.6rem;
       height: 7.6rem;
       background: var(--promo);
-      color: var(--navy);
+      color: var(--burgundy);
       clip-path: polygon(50% 0%, 61% 18%, 82% 12%, 76% 32%, 98% 38%, 80% 50%, 98% 62%, 76% 68%, 82% 88%, 61% 82%, 50% 100%, 39% 82%, 18% 88%, 24% 68%, 2% 62%, 20% 50%, 2% 38%, 24% 32%, 18% 12%, 39% 18%);
       display: flex;
       align-items: center;
@@ -218,7 +216,7 @@
     }
 
     .amenities {
-      background: var(--navy-dark);
+      background: var(--burgundy);
       color: #fff;
       padding: 3.5rem 0 3.3rem;
     }
@@ -254,7 +252,7 @@
     .rates { background: var(--surface-2); padding: 3.6rem 0 3.4rem; }
     .rates h2, .about h2 {
       margin: 0 0 0.45rem;
-      color: var(--navy);
+      color: var(--burgundy);
       font-size: clamp(1.5rem, 3vw, 2rem);
       font-weight: 800;
       text-align: center;
@@ -289,7 +287,7 @@
       flex-direction: column;
     }
     .size-card .size {
-      color: var(--navy);
+      color: var(--burgundy);
       font-size: 1.35rem;
       font-weight: 800;
     }
@@ -324,7 +322,7 @@
     }
 
     .cta-band {
-      background: var(--navy-dark);
+      background: var(--burgundy);
       color: #fff;
       text-align: center;
       padding: 3.2rem 0;
@@ -338,7 +336,7 @@
     .cta-band p { margin: 0 auto 1.2rem; max-width: 32rem; color: #c5ccd8; }
 
     .site-footer {
-      background: var(--navy-800);
+      background: var(--footer);
       color: #c5ccd8;
       padding: 2.4rem 0 1.6rem;
       font-size: 0.92rem;
@@ -352,7 +350,7 @@
     .site-footer p { margin: 0 0 0.4rem; }
     .site-footer a { color: #fff; }
     .endline {
-      background: #081018;
+      background: #1a1a1a;
       color: #8b93a0;
       text-align: center;
       font-size: 0.72rem;
