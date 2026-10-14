@@ -163,7 +163,7 @@ export const stores = [
   },
   {
     slug: 'odessa',
-    name: 'Odessa Smart Storage',
+    name: 'Odessa Self Storage & Parking',
     city: 'Odessa',
     state: 'TX',
     street: '114 Betty Lou Dr',
@@ -172,7 +172,7 @@ export const stores = [
     rentUrl: 'https://droitllc.ccstorage.com/find_units/loc_ecf4be244345c5992c20c0c1484a782d',
     domain: null,
     photo: 'odessa',
-    alt: 'Odessa Smart Storage in Odessa, Texas — drive aisle and storage containers',
+    alt: 'Odessa Self Storage & Parking in Odessa, Texas — drive aisle and storage containers',
     headline: 'Self storage on Betty Lou Drive.',
     summary: 'Our Odessa store is on Betty Lou Drive. Drive-up units and outdoor parking, with 24/7 gate access.',
     features: ['Drive-up units', 'Outdoor parking', '24/7 access'],
