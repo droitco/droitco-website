@@ -37,7 +37,7 @@ export function picture(images, name, { alt, sizes, widths, className = '', prio
 export const lqip = (images, name) => (images[name] ? `background-image:url(${images[name].lqip})` : '');
 
 /* ---------- Chrome ---------- */
-const header = (current, up = '') => `<header class="site-header">
+const header = (current, up = '', phone = site.phone) => `<header class="site-header">
       <div class="wrap">
         <a class="brand" href="${up}index.html">${site.brand}</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span></button>
@@ -50,7 +50,7 @@ ${nav
   )
   .join('\n')}
         </nav>
-        <a class="header-cta" href="tel:${site.phone.tel}">${ICON.phone}<span>${site.phone.display}</span></a>
+        <a class="header-cta" href="tel:${phone.tel}">${ICON.phone}<span>${phone.display}</span></a>
       </div>
     </header>`;
 
@@ -61,12 +61,12 @@ const footerLabel = (s, all) => {
   return sameCity ? esc(s.name) : `${esc(s.city)}, ${s.state}`;
 };
 
-const footer = (stores, up = '') => `<footer class="site-footer">
+const footer = (stores, up = '', phone = site.phone) => `<footer class="site-footer">
       <div class="wrap">
         <div class="footer-grid">
           <div class="footer-brand">
             <a class="brand" href="${up}index.html">${site.brand}</a>
-            <p><a class="footer-phone" href="tel:${site.phone.tel}">${site.phone.display}</a></p>
+            <p><a class="footer-phone" href="tel:${phone.tel}">${phone.display}</a></p>
             <p>Self storage with 24/7 access, and the crew that builds and runs it.</p>
           </div>
           <div>
@@ -123,6 +123,7 @@ export function layout({
   robots = 'index, follow',
   depth = 0,
   stores = [],
+  headerPhone = site.phone,
 }) {
   const up = '../'.repeat(depth);
   const url = `${site.origin}/${slug === 'index' ? '' : slug + '.html'}`;
@@ -156,12 +157,12 @@ ${jsonld ? `  <script type="application/ld+json">\n${JSON.stringify(jsonld, null
 </head>
 <body${cls ? ` class="${cls}"` : ''}>
     <a class="skip" href="#main">Skip to content</a>
-    ${header(slug, up)}
+    ${header(slug, up, headerPhone)}
 ${hero}
     <main id="main">
 ${main}
     </main>
-    ${footer(stores, up)}
+    ${footer(stores, up, headerPhone)}
     <script src="${up}app.js" defer></script>
 </body>
 </html>

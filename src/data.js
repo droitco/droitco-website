@@ -169,6 +169,7 @@ export const stores = [
     street: '114 Betty Lou Dr',
     zip: '79766',
     phone: { display: '(432) 200-0595', tel: '+14322000595' },
+    headerPhone: true,
     rentUrl: 'https://droitllc.ccstorage.com/find_units/loc_ecf4be244345c5992c20c0c1484a782d',
     domain: null,
     photo: 'odessa',

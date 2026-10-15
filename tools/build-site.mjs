@@ -391,6 +391,9 @@ ${others
       hero,
       main,
       stores,
+      // Per-store opt-in: header/footer show the store's own number only when
+      // data.js sets headerPhone: true on that store. Default stays site-wide.
+      headerPhone: s.headerPhone ? s.phone : site.phone,
       ogImage: `img/${s.photo}-1200.jpg`,
       jsonld: {
         '@context': 'https://schema.org',
