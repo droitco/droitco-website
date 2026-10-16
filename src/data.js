@@ -171,6 +171,8 @@ export const stores = [
     phone: { display: '(432) 200-0595', tel: '+14322000595' },
     headerPhone: true,
     rentUrl: 'https://droitllc.ccstorage.com/find_units/loc_ecf4be244345c5992c20c0c1484a782d',
+    rentLabel: 'Rent Now',
+    heroNote: 'Pay online and move in today. Need a few days? Call (432) 200-0595 to hold a unit free for 3–5 days.',
     domain: null,
     photo: 'odessa',
     alt: 'Odessa Self Storage & Parking in Odessa, Texas — drive aisle and storage containers',

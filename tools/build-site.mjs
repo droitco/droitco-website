@@ -321,9 +321,10 @@ for (const s of stores) {
         <h1 data-reveal style="--i:1">${esc(s.headline)}</h1>
         <p data-reveal style="--i:2">${esc(s.summary)}</p>
         <div class="btn-row" data-reveal style="--i:3">
-          <a class="btn btn-accent" href="${s.rentUrl}" rel="noopener">Rent online ${ICON.arrow}</a>
+          <a class="btn btn-accent" href="${s.rentUrl}" rel="noopener">${s.rentLabel || 'Rent online'} ${ICON.arrow}</a>
           <a class="btn btn-outline-light" href="tel:${s.phone.tel}">${ICON.phone} ${s.phone.display}</a>
-        </div>
+        </div>${s.heroNote ? `
+        <p class="hero-note" data-reveal style="--i:4;font-size:.875rem;margin-top:.75rem;opacity:.9">${esc(s.heroNote)}</p>` : ''}
       </div>
     </section>`;
 
@@ -356,10 +357,10 @@ ${s.features.map((f) => `              <li class="tag">${esc(f)}</li>`).join('\n
               </div>
               <div class="fact">
                 <dt>Rent</dt>
-                <dd><a href="${s.rentUrl}" rel="noopener">${s.domain ? esc(s.domain) : 'Rent online'}</a></dd>
+                <dd><a href="${s.rentUrl}" rel="noopener">${s.domain ? esc(s.domain) : s.rentLabel || 'Rent online'}</a></dd>
               </div>
               <div class="btn-row" style="margin-top:var(--sp-3)">
-                <a class="btn btn-accent btn-sm" href="${s.rentUrl}" rel="noopener">Rent online</a>
+                <a class="btn btn-accent btn-sm" href="${s.rentUrl}" rel="noopener">${s.rentLabel || 'Rent online'}</a>
                 <a class="btn btn-ghost btn-sm" href="${mapsUrl(s)}" rel="noopener">${ICON.pin} Directions</a>
               </div>
             </dl>
