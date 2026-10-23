@@ -214,9 +214,18 @@ const smsSection = (id = 'sms-opt-in') => `      <section class="section" id="${
 
 ${smsSection()}`;
 
+  // The previous storage-first homepage is kept as an unlinked, noindexed
+  // archive at /storage-home/. Relative links are re-rooted one level up.
+  const reroot = (html) =>
+    html
+      .replace(/\b(href|src)="(?!https?:|tel:|mailto:|data:|#|\/)/g, '$1="../')
+      .replace(/srcset="([^"]+)"/g, (m, v) =>
+        `srcset="${v.split(',').map((x) => x.trim()).map((x) => (/^(https?:|data:|\/)/.test(x) ? x : '../' + x)).join(', ')}"`)
+      .replace('<link rel="canonical" href="https://droitco.com/">', '<link rel="canonical" href="https://droitco.com/storage-home/">')
+      .replace(/<meta name="robots" content="[^"]*">/, '<meta name="robots" content="noindex, follow">');
   await emit(
-    'index.html',
-    layout({
+    'storage-home/index.html',
+    reroot(cleanUrls(layout({
       slug: 'index',
       title: 'Droit | Self Storage, Open 24/7',
       description:
@@ -225,8 +234,31 @@ ${smsSection()}`;
       main,
       stores,
       jsonld: { '@context': 'https://schema.org', '@graph': [org, ...stores.map(storeLd)] },
-    })
+    })))
   );
+}
+
+/* ====================== HOME (local business services) ====================== */
+// Hand-authored page in src/home.html. The A2P/10DLC opt-in (campaign CTD3F6D)
+// is injected at <!--SMS_OPT_IN--> with the same form and consent text as before.
+{
+  const smsHome = `<section class="textus" id="sms-opt-in"><div class="wrap two"><div><div class="eyebrow">Text us</div><h2>Account texts, if you want them.</h2>
+<p class="lead">Rental and account updates by text. Not required to rent, and you can stop any time.</p></div>
+<form class="form" action="thanks.html" method="get">
+<label class="field"><span>Name</span>
+<input type="text" name="name" autocomplete="name" required></label>
+<label class="field"><span>Mobile number</span>
+<input type="tel" name="mobile" autocomplete="tel" required></label>
+<label class="field"><span>Email <span class="optional">(optional)</span></span>
+<input type="email" name="email" autocomplete="email"></label>
+<label class="consent">
+<input type="checkbox" name="sms_opt_in" value="yes" required>
+<span>${smsConsent} <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</span></label>
+<button class="btn" type="submit">Request texts</button>
+</form></div></section>`;
+  const home = await readFile(src('home.html'), 'utf8');
+  if (!home.includes('<!--SMS_OPT_IN-->')) throw new Error('src/home.html lost its <!--SMS_OPT_IN--> slot');
+  await emit('index.html', home.replace('<!--SMS_OPT_IN-->', smsHome));
 }
 
 /* ========================== LOCATIONS ========================== */
