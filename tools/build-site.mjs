@@ -1054,60 +1054,47 @@ ${builds
 }
 
 /* ========================== CONTACT =========================== */
+// Hand-authored page in src/contact.html matching the homepage design.
+// Injects the contact / lead-leak audit form (including #sms-opt-in and A2P
+// consent wording from smsConsent) at <!--CONTACT_FORM-->.
 {
-  const hero = `    <section class="page-head">
-      <div class="wrap">
-        <p class="eyebrow" data-reveal>Contact</p>
-        <h1 data-reveal style="--i:1">One number, seven days a week.</h1>
-        <p data-reveal style="--i:2">Renting a unit, asking about your account, or bringing us a store or a site — start with a call.</p>
-        <div class="btn-row" data-reveal style="--i:3">
-          <a class="btn btn-accent" href="tel:${site.phone.tel}">${ICON.phone} ${site.phone.display}</a>
-          <a class="btn btn-outline-light" href="locations.html">Find a location</a>
-        </div>
-      </div>
-    </section>`;
-
-  const main = `      <section class="section">
-        <div class="wrap">
-          <p class="eyebrow" data-reveal>Where to start</p>
-          <h2 class="h-md" data-reveal>Tell us which one you are.</h2>
-          <ol class="steps">
-            <li class="step" data-reveal style="--i:0">
-              <h3>Renting or already renting</h3>
-              <p>Unit sizes, availability, gate access, or your account. Each store also has its own direct number on its <a href="locations.html">location page</a>.</p>
-            </li>
-            <li class="step" data-reveal style="--i:1">
-              <h3>You own a store</h3>
-              <p>Vacant units to fill, or a store to hand off. Start at <a href="booking.html">Booking</a> or <a href="management.html">Management</a>.</p>
-            </li>
-            <li class="step" data-reveal style="--i:2">
-              <h3>You have land</h3>
-              <p>Development, construction, and operations. Start at <a href="development.html">Builds</a>.</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-${smsSection()}`;
-
-  await emit(
-    'contact.html',
-    layout({
-      slug: 'contact',
-      title: 'Contact Droit | (888) 711-6050',
-      description:
-        'Call (888) 711-6050 for rentals, accounts, owner booking and management, or a new facility. Optional rental text messages.',
-      hero,
-      main,
-      stores,
-      jsonld: {
-        '@context': 'https://schema.org',
-        '@type': 'ContactPage',
-        url: `${site.origin}/contact.html`,
-        mainEntity: org,
-      },
-    })
-  );
+  const contactForm = `<div class="form-card" id="sms-opt-in">
+<h2>Request your free audit or send a message</h2>
+<p class="sub">Fill this out and we will reach out, or call <a href="tel:${site.phone.tel}" style="color:var(--navy);font-weight:600">888-711-6050</a>.</p>
+<form class="form" action="thanks.html" method="get">
+<div class="row2">
+<label class="field"><span>Name</span>
+<input type="text" name="name" autocomplete="name" required></label>
+<label class="field"><span>Mobile number</span>
+<input type="tel" name="mobile" autocomplete="tel" required></label>
+</div>
+<div class="row2">
+<label class="field"><span>Email <span class="optional">(optional)</span></span>
+<input type="email" name="email" autocomplete="email"></label>
+<label class="field"><span>Business or website <span class="optional">(optional)</span></span>
+<input type="text" name="business" autocomplete="organization" placeholder="Your business name or URL"></label>
+</div>
+<label class="field"><span>What can we help with?</span>
+<select name="topic">
+<option value="audit">Free 30-minute lead-leak audit</option>
+<option value="ai-phone">AI phone answering</option>
+<option value="local-seo">Local SEO and Google Business Profile</option>
+<option value="website">New website or redesign</option>
+<option value="reviews-ads-automation">Reviews, ads or back-office automation</option>
+<option value="storage-management">Third-party self-storage management or development</option>
+<option value="storage-rental">Renting a storage unit or existing storage account</option>
+<option value="other">Something else</option>
+</select></label>
+<label class="field"><span>Anything we should look at before we call? <span class="optional">(optional)</span></span>
+<textarea name="notes" rows="3" placeholder="Tell us about your business, city or what you want to fix."></textarea></label>
+<label class="consent">
+<input type="checkbox" name="sms_opt_in" value="yes" required>
+<span>${smsConsent} <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</span></label>
+<button class="btn" type="submit">Request free audit</button>
+</form></div>`;
+  const contactHtml = await readFile(src('contact.html'), 'utf8');
+  if (!contactHtml.includes('<!--CONTACT_FORM-->')) throw new Error('src/contact.html lost its <!--CONTACT_FORM--> slot');
+  await emit('contact.html', contactHtml.replace('<!--CONTACT_FORM-->', contactForm));
 }
 
 /* ====================== PRINT ONE-PAGERS ====================== */
