@@ -1,0 +1,334 @@
+/* Tenant rating funnel. Uses the site tokens from styles.css. */
+
+body.feedback-body {
+  background: var(--bg);
+}
+
+body.feedback-body main {
+  padding-top: 1.35rem;
+  padding-bottom: 3rem;
+}
+
+.feedback-app {
+  max-width: 40rem;
+  min-width: 0;
+}
+
+.feedback-app [hidden] {
+  display: none !important;
+}
+
+.feedback-app h1,
+.feedback-app h2,
+.star-btn,
+.facility-card {
+  scroll-margin-top: 7.5rem;
+}
+
+.feedback-app .rule {
+  margin-bottom: 1rem;
+}
+
+.feedback-app h1 {
+  max-width: 18em;
+  margin: 0.2rem 0 0.7rem;
+  font-size: clamp(1.85rem, 4.8vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.036em;
+  text-wrap: balance;
+}
+
+.feedback-app .lede {
+  margin-bottom: 0;
+}
+
+.facility-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1.15rem;
+}
+
+.facility-pills button {
+  appearance: none;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--navy);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.4rem 0.78rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.facility-pills button[aria-pressed="true"] {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+.facility-pills button:hover {
+  border-color: var(--navy);
+}
+
+.facility-card {
+  margin: 0 0 1.05rem;
+}
+
+.facility-card h2 {
+  font-size: 1.28rem;
+  margin-bottom: 0.2rem;
+}
+
+.facility-city {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.facility-street {
+  margin: 0;
+  color: var(--ink);
+}
+
+.facility-card .phone {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 0.2rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+}
+
+.switch-facility {
+  margin: 0.15rem 0 0;
+  font-size: 0.9rem;
+}
+
+.rating-block {
+  margin-top: 1.15rem;
+}
+
+.star-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin: 0.9rem 0 0;
+}
+
+.star-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.28rem;
+  width: 100%;
+  min-width: 0;
+  min-height: 5.5rem;
+  padding: 0.55rem 0.1rem 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--navy);
+  font: inherit;
+  font-weight: 600;
+  letter-spacing: -0.011em;
+  text-align: center;
+  cursor: pointer;
+}
+
+.star-glyphs {
+  display: flex;
+  justify-content: center;
+}
+
+.star-icon {
+  display: block;
+  width: 1.55rem;
+  height: 1.55rem;
+}
+
+.star-icon .fill {
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.star-icon.is-on .fill {
+  fill: currentColor;
+}
+
+.star-caption {
+  min-width: 0;
+  max-width: 100%;
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.star-btn.is-lit {
+  border-color: var(--navy);
+  background: var(--bg);
+}
+
+.star-btn[aria-checked="true"] {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+@media (hover: hover) {
+  .star-btn:hover {
+    border-color: var(--navy);
+  }
+
+  .star-btn[aria-checked="true"]:hover {
+    background: var(--navy-mid);
+    border-color: var(--navy-mid);
+    color: var(--white);
+  }
+}
+
+.outcome {
+  margin-top: 1.15rem;
+}
+
+.outcome h2 {
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+}
+
+.feedback-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.feedback-form label {
+  display: grid;
+  gap: 0.32rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.feedback-form .optional {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  font: inherit;
+  font-weight: 400;
+  color: var(--ink);
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.7rem 0.75rem;
+  background: var(--white);
+  min-height: 48px;
+}
+
+.feedback-form textarea {
+  min-height: 8.5rem;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.feedback-form input:focus,
+.feedback-form textarea:focus {
+  outline: 2px solid var(--navy);
+  outline-offset: 1px;
+  border-color: var(--navy);
+}
+
+.form-alert {
+  background: #f8f1f1;
+  border: 1px solid #e4d0d0;
+  color: #6d2424;
+  border-radius: 8px;
+  padding: 0.7rem 0.85rem;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-alert ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.form-alert li {
+  margin: 0.15rem 0;
+}
+
+.redirect-note {
+  color: var(--slate);
+  font-size: 0.92rem;
+}
+
+.feedback-actions {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.outcome > .btn,
+.feedback-actions .btn {
+  width: 100%;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.feedback-form button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.fb-reveal:not([hidden]) {
+  animation: fb-in 0.4s var(--ease) both;
+}
+
+@keyframes fb-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fb-reveal:not([hidden]) {
+    animation: none;
+  }
+
+  .star-btn:active {
+    transform: none;
+  }
+}
+
+@media (max-width: 639px) {
+  body.feedback-body main {
+    padding-top: 1.15rem;
+  }
+}
