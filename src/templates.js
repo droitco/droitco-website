@@ -71,7 +71,6 @@ const footer = (stores, up = '', phone = site.phone) => `<footer class="site-foo
           <div>
             <h2>Storage</h2>
             <ul>
-              <li><a href="${up}locations.html">All locations</a></li>
 ${stores
   .slice(0, 5)
   .map((s) => `              <li><a href="${up}${s.slug}.html">${footerLabel(s, stores)}</a></li>`)
@@ -90,10 +89,8 @@ ${stores
 ` : ''}          <div>
             <h2>Owners</h2>
             <ul>
-              <li><a href="${up}owners.html">Owner services</a></li>
               <li><a href="${up}booking.html">Booking</a></li>
               <li><a href="${up}management.html">Management</a></li>
-              <li><a href="${up}development.html">Development</a></li>
             </ul>
             <h2 class="footer-h2-gap">Company</h2>
             <ul>

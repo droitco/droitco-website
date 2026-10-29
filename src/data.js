@@ -13,9 +13,6 @@ export const site = {
 // Grouped by audience: renters first, then the owner path behind one hub,
 // then the company. Booking and Management live under Owners, not in the nav.
 export const nav = [
-  { href: 'locations.html', label: 'Locations' },
-  { href: 'owners.html', label: 'Owners' },
-  { href: 'development.html', label: 'Development' },
   { href: 'about.html', label: 'About' },
   { href: 'contact.html', label: 'Contact' },
 ];
