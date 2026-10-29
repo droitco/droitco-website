@@ -54,8 +54,7 @@ ${nav
       </div>
     </header>`;
 
-// Two stores share Eau Claire, and two share the name "Smart Self Storage",
-// so label by whichever of the pair is actually distinguishing.
+// Label by city unless two stores share one.
 const footerLabel = (s, all) => {
   const sameCity = all.filter((o) => o.city === s.city && o.state === s.state).length > 1;
   return sameCity ? esc(s.name) : `${esc(s.city)}, ${s.state}`;
@@ -79,7 +78,7 @@ ${stores
   .join('\n')}
             </ul>
           </div>
-          <div>
+${stores.length > 5 ? `          <div>
             <h2>More stores</h2>
             <ul>
 ${stores
@@ -88,7 +87,7 @@ ${stores
   .join('\n')}
             </ul>
           </div>
-          <div>
+` : ''}          <div>
             <h2>Owners</h2>
             <ul>
               <li><a href="${up}owners.html">Owner services</a></li>
@@ -119,7 +118,7 @@ export function layout({
   hero = '',
   main = '',
   jsonld = null,
-  ogImage = 'img/eau-claire-clear-space-aerial-1200.jpg',
+  ogImage = 'img/des-moines-1200.jpg',
   robots = 'index, follow',
   depth = 0,
   stores = [],

@@ -48,6 +48,7 @@ while (queue.length) {
 const EXPECTED_ORPHANS = new Set([
   '404.html', 'thanks.html', 'preview/mitchell-road.html',
   'builds.html', 'privacy/index.html', 'terms/index.html',
+  'eau-claire-clear-space.html', 'eau-claire-southview.html', 'river-falls.html', 'mosinee.html', 'mankato.html', 'dayton.html', 'memphis.html', 'odessa.html', 'medical-lake.html',
 ]);
 const orphans = all.filter(f => !seen.has(f) && !EXPECTED_ORPHANS.has(f));
 const sitemap = await readFile(join(ROOT, 'sitemap.xml'), 'utf8');
@@ -79,7 +80,7 @@ r('Orphans (unreachable from home)', orphans);
 r('Indexable but missing from sitemap', missingFromSitemap);
 r('.html leaking into links/text', [...new Set(htmlLeak)]);
 // A redirect shim sharing its target's canonical is the point of a shim.
-const shims = new Set(['builds.html', 'privacy/index.html', 'terms/index.html']);
+const shims = new Set(['builds.html', 'privacy/index.html', 'terms/index.html', 'eau-claire-clear-space.html', 'eau-claire-southview.html', 'river-falls.html', 'mosinee.html', 'mankato.html', 'dayton.html', 'memphis.html', 'odessa.html', 'medical-lake.html']);
 r('Duplicate canonicals', Object.entries(dupCanon)
   .map(([c, v]) => [c, v.filter(f => !shims.has(f))])
   .filter(([, v]) => v.length > 1)

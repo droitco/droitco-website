@@ -11,8 +11,7 @@ const r = (p) => join(ROOT, p);
 
 const PAGES = [
   'index.html', 'locations.html',
-  'eau-claire-clear-space.html', 'eau-claire-southview.html', 'river-falls.html', 'mosinee.html',
-  'mankato.html', 'des-moines.html', 'dayton.html', 'memphis.html', 'odessa.html', 'medical-lake.html',
+  'des-moines.html',
   'owners.html', 'booking.html', 'management.html', 'development.html', 'about.html', 'contact.html',
   'booking-sheet.html', 'management-sheet.html',
   'privacy.html', 'terms.html', 'thanks.html', '404.html',

@@ -134,7 +134,7 @@
       if (count) {
         count.innerHTML =
           shown === cards.length
-            ? '<b>' + cards.length + '</b> stores open, all with 24/7 access'
+            ? '<b>' + cards.length + '</b> ' + (cards.length === 1 ? 'store' : 'stores') + ' open, all with 24/7 access'
             : '<b>' + shown + '</b> of ' + cards.length + ' stores match';
       }
       if (empty) empty.classList.toggle('is-on', shown === 0);

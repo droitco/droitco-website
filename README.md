@@ -57,10 +57,9 @@ resolve, so nothing already indexed or filed breaks. `/builds` redirects to
 - Public brand is **DROIT**. Not Droitco, not LLC, and no letterform logo.
 - All open stores are **24/7**. Never publish limited gate hours for an open
   store. Gates do close; what is always true is that access is 24/7.
-- Company phone is **(888) 711-6050**. Odessa's store phone is **(432) 200-0595**.
-- Odessa is **114 Betty Lou Dr** only. `odessasmartstorage.com` and 6825 Faudree
-  Rd are a different company — never link, cite, or imply otherwise.
-- Lynwood and Daytona Beach / Holly Hill are **construction only**. No rent CTA.
+- Company phone is **(888) 711-6050**. Des Moines store phone is **(515) 882-5226**.
+- Des Moines (Smart Self Storage, 4400 NE 14th St) is the only listed store.
+  Retired store URLs are redirect shims to `/des-moines` (see `retiredStores`).
 - Percentages from third-party research are labelled *industry figures, not
   Droit results*, and carry their source.
 - No Droit pricing or fee percentages on Booking, Management, or the print sheets.

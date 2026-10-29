@@ -46,7 +46,7 @@ const org = {
   telephone: `+1-888-711-6050`,
   logo: `${site.origin}/favicon.svg`,
   foundingDate: site.founded,
-  description: 'Self storage with 24/7 access at ten open stores, plus development, construction, and operations.',
+  description: 'Self storage with 24/7 access in Des Moines, Iowa, plus development, construction, and operations.',
 };
 
 const storeLd = (s) => ({
@@ -105,10 +105,10 @@ const smsSection = (id = 'sms-opt-in') => `      <section class="section" id="${
 {
   const hero = `    <section class="hero">
       <div class="hero-media">
-        ${picture(images, 'eau-claire-clear-space-aerial', {
-          alt: 'Aerial view of a Droit self-storage facility at dusk',
+        ${picture(images, 'des-moines', {
+          alt: 'Smart Self Storage in Des Moines, Iowa — drive-up units',
           sizes: '100vw',
-          widths: [800, 1200, 1600, 1920],
+          widths: [800, 1200, 1600],
           priority: true,
           ratio: 16 / 9,
         })}
@@ -116,14 +116,14 @@ const smsSection = (id = 'sms-opt-in') => `      <section class="section" id="${
       <div class="wrap">
         <p class="eyebrow" data-reveal>Self storage</p>
         <h1 data-reveal style="--i:1">Storage that never closes.</h1>
-        <p data-reveal style="--i:2">Ten stores across seven states. Drive-up units and outdoor parking, rented online, with gate access any hour of the day or night.</p>
+        <p data-reveal style="--i:2">Smart Self Storage on NE 14th Street in Des Moines, Iowa. Drive-up units, rented online, with gate access any hour of the day or night.</p>
         <div class="btn-row" data-reveal style="--i:3">
-          <a class="btn btn-accent" href="locations.html">Find a location ${ICON.arrow}</a>
+          <a class="btn btn-accent" href="des-moines.html">See the Des Moines store ${ICON.arrow}</a>
           <a class="btn btn-outline-light" href="tel:${site.phone.tel}">${ICON.phone} ${site.phone.display}</a>
         </div>
         <ul class="chips" data-reveal style="--i:4">
-          <li class="chip"><span class="chip-dot"></span><b>10</b> stores open</li>
-          <li class="chip"><b>7</b> states</li>
+          <li class="chip"><span class="chip-dot"></span>Open and renting</li>
+          <li class="chip">Des Moines, IA</li>
           <li class="chip"><b>24/7</b> gate access</li>
         </ul>
       </div>
@@ -132,11 +132,11 @@ const smsSection = (id = 'sms-opt-in') => `      <section class="section" id="${
   const main = `      <section class="section" id="find">
         <div class="wrap">
           <p class="eyebrow" data-reveal>Find storage</p>
-          <h2 class="h-md" data-reveal>Ten stores in seven states.</h2>
-          <p class="lede" data-reveal>Pick your state to see the stores near you. Every one of them is open and renting today.</p>
+          <h2 class="h-md" data-reveal>Self storage in Des Moines.</h2>
+          <p class="lede" data-reveal>Smart Self Storage at 4400 NE 14th St is open and renting today.</p>
           ${stateTiles(stores)}
           <div class="btn-row" data-reveal>
-            <a class="btn" href="locations.html">See all ten locations ${ICON.arrow}</a>
+            <a class="btn" href="des-moines.html">View the Des Moines store ${ICON.arrow}</a>
           </div>
         </div>
       </section>
@@ -147,16 +147,16 @@ const smsSection = (id = 'sms-opt-in') => `      <section class="section" id="${
           <h2 class="h-md" data-reveal>Three steps, no counter visit.</h2>
           <ol class="steps">
             <li class="step" data-reveal style="--i:0">
-              <h3>Pick a store</h3>
-              <p>Choose the location closest to you and see what is available &mdash; drive-up units, and outdoor parking at some stores.</p>
+              <h3>Pick a unit</h3>
+              <p>See what is available at our Des Moines store &mdash; drive-up units on NE 14th Street.</p>
             </li>
             <li class="step" data-reveal style="--i:1">
               <h3>Rent online</h3>
-              <p>Finish the rental on that store's own site. No appointment, no waiting on an office to open.</p>
+              <p>Finish the rental on the store's own site. No appointment, no waiting on an office to open.</p>
             </li>
             <li class="step" data-reveal style="--i:2">
               <h3>Move in, any hour</h3>
-              <p>Access at every open store is 24 hours a day, seven days a week. Your gate code works whenever you need it, including nights and weekends.</p>
+              <p>Access is 24 hours a day, seven days a week. Your gate code works whenever you need it, including nights and weekends.</p>
             </li>
           </ol>
         </div>
@@ -165,20 +165,20 @@ const smsSection = (id = 'sms-opt-in') => `      <section class="section" id="${
       <section class="band-soft section">
         <div class="wrap">
           <p class="eyebrow" data-reveal>What you get</p>
-          <h2 class="h-md" data-reveal>Run by the company that built them.</h2>
-          <p class="lede" data-reveal>We are not a listing site. We develop, build, and operate these stores ourselves, which is why the details stay right.</p>
+          <h2 class="h-md" data-reveal>Run by the company that operates it.</h2>
+          <p class="lede" data-reveal>We are not a listing site. We operate the store ourselves, which is why the details stay right.</p>
           <ol class="steps">
             <li class="step" data-reveal style="--i:0">
               <h3>Access on your schedule</h3>
-              <p>Every open store is 24/7. Nights, weekends, and holidays included, with no office hours to work around.</p>
+              <p>The store is open 24/7. Nights, weekends, and holidays included, with no office hours to work around.</p>
             </li>
             <li class="step" data-reveal style="--i:1">
               <h3>Drive up to the door</h3>
-              <p>Ground-level drive-up units at every store, plus outdoor parking for vehicles and trailers where the site allows.</p>
+              <p>Ground-level drive-up units, so you can pull right up to your door.</p>
             </li>
             <li class="step" data-reveal style="--i:2">
               <h3>One number, real people</h3>
-              <p>Each store has its own local number, and <a href="tel:${site.phone.tel}">${site.phone.display}</a> reaches us for anything on any of them.</p>
+              <p>Call the store at <a href="tel:+15158825226">(515) 882-5226</a>, or reach us at <a href="tel:${site.phone.tel}">${site.phone.display}</a> for anything else.</p>
             </li>
           </ol>
         </div>
@@ -192,7 +192,7 @@ const smsSection = (id = 'sms-opt-in') => `      <section class="section" id="${
           <div class="offer-grid">
             <article class="offer" data-reveal style="--i:0">
               <h3><a href="booking.html">Booking</a></h3>
-              <p>We fill your vacant units as your agent, on the same channels we run at our own stores. You keep the lease.</p>
+              <p>We fill your vacant units as your agent, on the same channels we run at our own store. You keep the lease.</p>
               <span class="offer-more">Fill vacancies ${ICON.arrow}</span>
             </article>
             <article class="offer" data-reveal style="--i:1">
@@ -220,7 +220,7 @@ ${smsSection()}`;
       slug: 'index',
       title: 'Droit | Self Storage, Open 24/7',
       description:
-        'Self storage with 24/7 gate access at ten open stores across seven states. Rent online. We also develop, build, and operate new facilities. Call (888) 711-6050.',
+        'Self storage with 24/7 gate access in Des Moines, Iowa. Rent online. We also develop, build, and operate new facilities. Call (888) 711-6050.',
       hero,
       main,
       stores,
@@ -234,8 +234,8 @@ ${smsSection()}`;
   const hero = `    <section class="page-head">
       <div class="wrap">
         <p class="eyebrow" data-reveal>Rent online</p>
-        <h1 data-reveal style="--i:1">Ten stores. All open 24/7.</h1>
-        <p data-reveal style="--i:2">Every location below is open and renting today. Pick a store, rent on its site, and move in on your own schedule. Questions: <a href="tel:${site.phone.tel}">${site.phone.display}</a>.</p>
+        <h1 data-reveal style="--i:1">Des Moines. Open 24/7.</h1>
+        <p data-reveal style="--i:2">Our Des Moines store is open and renting today. Rent on its site, and move in on your own schedule. Questions: <a href="tel:${site.phone.tel}">${site.phone.display}</a>.</p>
       </div>
     </section>`;
 
@@ -280,7 +280,7 @@ ${byState
       slug: 'locations',
       title: 'Storage Locations | Droit',
       description:
-        'Ten open self-storage locations across Wisconsin, Minnesota, Iowa, Ohio, Tennessee, Texas, and Washington. 24/7 gate access. Rent online.',
+        'Self storage in Des Moines, Iowa. 24/7 gate access. Rent online.',
       hero,
       main,
       stores,
@@ -301,8 +301,8 @@ ${byState
 
 /* ======================== STORE PAGES ========================= */
 for (const s of stores) {
-  // Only same-state stores are "nearby". Odessa has no Texas sibling, so that
-  // page lists the whole portfolio instead of implying Eau Claire is close.
+  // Only same-state stores are "nearby"; otherwise list the whole portfolio.
+  // With a single store the section is omitted.
   const near = stores.filter((o) => o.slug !== s.slug && o.state === s.state);
   const others = near.length ? near.slice(0, 3) : stores.filter((o) => o.slug !== s.slug);
 
@@ -311,7 +311,7 @@ for (const s of stores) {
         ${picture(images, s.photo, {
           alt: s.alt,
           sizes: '100vw',
-          widths: [800, 1200, 1600, 1920],
+          widths: [800, 1200, 1600],
           priority: true,
           ratio: 16 / 9,
         })}
@@ -368,7 +368,7 @@ ${s.features.map((f) => `              <li class="tag">${esc(f)}</li>`).join('\n
         </div>
       </section>
 
-      <section class="section">
+${others.length ? `      <section class="section">
         <div class="wrap">
           <p class="eyebrow" data-reveal>${near.length ? 'Nearby' : 'Elsewhere'}</p>
           <h2 class="h-md" data-reveal>${near.length ? `More storage in ${states[s.state]}` : 'Every Droit location'}</h2>
@@ -379,9 +379,9 @@ ${others
   )
   .join('\n')}
           </ul>
-          <p style="margin-top:var(--sp-4)"><a href="locations.html">View all ten locations</a></p>
+          <p style="margin-top:var(--sp-4)"><a href="locations.html">View all locations</a></p>
         </div>
-      </section>`;
+      </section>` : ''}`;
 
   await emit(
     `${s.slug}.html`,
@@ -418,10 +418,10 @@ ${others
 {
   const hero = `    <section class="hero hero-sm">
       <div class="hero-media">
-        ${picture(images, 'eau-claire-clear-space-aerial', {
+        ${picture(images, 'des-moines', {
           alt: 'Aerial view of a self-storage facility operated by Droit',
           sizes: '100vw',
-          widths: [800, 1200, 1600, 1920],
+          widths: [800, 1200, 1600],
           priority: true,
           ratio: 16 / 9,
         })}
@@ -514,10 +514,10 @@ ${others
 {
   const hero = `    <section class="hero hero-sm">
       <div class="hero-media">
-        ${picture(images, 'river-falls', {
+        ${picture(images, 'des-moines', {
           alt: 'Aerial view of a self-storage facility managed by Droit',
           sizes: '100vw',
-          widths: [800, 1200, 1600, 1920],
+          widths: [800, 1200, 1600],
           priority: true,
           ratio: 16 / 9,
         })}
@@ -595,7 +595,7 @@ ${managementModules
       hero,
       main,
       stores,
-      ogImage: 'img/river-falls-1200.jpg',
+      ogImage: 'img/des-moines-1200.jpg',
       jsonld: {
         '@context': 'https://schema.org',
         '@type': 'Service',
@@ -618,10 +618,10 @@ ${managementModules
 
   const hero = `    <section class="hero hero-sm">
       <div class="hero-media">
-        ${picture(images, 'eau-claire-clear-space-aerial', {
+        ${picture(images, 'des-moines', {
           alt: 'Aerial view of a self-storage facility operated by Droit',
           sizes: '100vw',
-          widths: [800, 1200, 1600, 1920],
+          widths: [800, 1200, 1600],
           priority: true,
           ratio: 16 / 9,
         })}
@@ -704,10 +704,8 @@ ${managementModules
         <div class="wrap">
           <p class="eyebrow" data-reveal>Proof</p>
           <h2 class="h-md" data-reveal>We run these ourselves.</h2>
-          <p class="lede" data-reveal>Ten self-storage stores across seven states, on the same modules and the same channels we are describing here. Nothing gets tried on your store first. <a href="locations.html">See the portfolio</a>.</p>
+          <p class="lede" data-reveal>Our own Des Moines store runs on the same modules and the same channels we are describing here. Nothing gets tried on your store first. <a href="des-moines.html">See the store</a>.</p>
           <ul class="stat-grid">
-            <li class="stat" data-reveal style="--i:0"><span class="stat-num" data-count="10">10</span><p class="stat-label">Stores open and renting</p></li>
-            <li class="stat" data-reveal style="--i:1"><span class="stat-num" data-count="7">7</span><p class="stat-label">States with an operating store</p></li>
             <li class="stat" data-reveal style="--i:2"><span class="stat-num" data-count="24">24</span><p class="stat-label">Hour access at every open store</p></li>
           </ul>
         </div>
@@ -812,10 +810,10 @@ ${industry.occupancy.rows.map((rw) => bar(rw)).join('\n')}
 
   const hero = `    <section class="hero hero-sm">
       <div class="hero-media">
-        ${picture(images, 'river-falls', {
-          alt: 'Aerial view of a self-storage facility operated by Droit',
+        ${picture(images, 'des-moines', {
+          alt: 'Smart Self Storage in Des Moines, Iowa — drive-up units',
           sizes: '100vw',
-          widths: [800, 1200, 1600, 1920],
+          widths: [800, 1200, 1600],
           priority: true,
           ratio: 16 / 9,
         })}
@@ -823,9 +821,9 @@ ${industry.occupancy.rows.map((rw) => bar(rw)).join('\n')}
       <div class="wrap">
         <p class="eyebrow" data-reveal>About</p>
         <h1 data-reveal style="--i:1">We build storage, then we run it.</h1>
-        <p data-reveal style="--i:2">Droit develops, builds, operates, and manages self storage. Ten stores are open across seven states, and the same crew that put them up answers the phone.</p>
+        <p data-reveal style="--i:2">Droit develops, builds, operates, and manages self storage. Our store is open in Des Moines, Iowa, and the same crew that runs it answers the phone.</p>
         <div class="btn-row" data-reveal style="--i:3">
-          <a class="btn btn-accent" href="locations.html">See the portfolio ${ICON.arrow}</a>
+          <a class="btn btn-accent" href="des-moines.html">See the Des Moines store ${ICON.arrow}</a>
           <a class="btn btn-outline-light" href="tel:${site.phone.tel}">${ICON.phone} ${site.phone.display}</a>
         </div>
       </div>
@@ -836,9 +834,7 @@ ${industry.occupancy.rows.map((rw) => bar(rw)).join('\n')}
           <p class="eyebrow" data-reveal>By the numbers</p>
           <h2 class="h-md" data-reveal>An operating record, not a pitch deck.</h2>
           <ul class="stat-grid">
-            <li class="stat" data-reveal style="--i:0"><span class="stat-num" data-count="10">10</span><p class="stat-label">Stores open and renting</p></li>
-            <li class="stat" data-reveal style="--i:1"><span class="stat-num" data-count="7">7</span><p class="stat-label">States with an operating store</p></li>
-            <li class="stat" data-reveal style="--i:2"><span class="stat-num" data-count="2">2</span><p class="stat-label">Facilities under construction</p></li>
+            <li class="stat" data-reveal style="--i:0"><span class="stat-num" data-count="1">1</span><p class="stat-label">Store open and renting</p></li>
             <li class="stat" data-reveal style="--i:3"><span class="stat-num" data-count="24">24</span><p class="stat-label">Hour access, every open store</p></li>
           </ul>
         </div>
@@ -885,7 +881,7 @@ ${industry.occupancy.rows.map((rw) => bar(rw)).join('\n')}
       <section class="section">
         <div class="wrap">
           <p class="eyebrow" data-reveal>Where we are</p>
-          <h2 class="h-md" data-reveal>Seven states, ten stores.</h2>
+          <h2 class="h-md" data-reveal>Des Moines, Iowa.</h2>
           <dl class="rows" data-reveal>
 ${byState
   .map(
@@ -920,11 +916,11 @@ ${byState
       slug: 'about',
       title: 'About Droit | Self-Storage Operator',
       description:
-        'Droit develops, builds, operates, and manages self storage. Ten stores open across seven states, all with 24/7 access. Call (888) 711-6050.',
+        'Droit develops, builds, operates, and manages self storage. Our Des Moines store is open with 24/7 access. Call (888) 711-6050.',
       hero,
       main,
       stores,
-      ogImage: 'img/river-falls-1200.jpg',
+      ogImage: 'img/des-moines-1200.jpg',
       jsonld: { '@context': 'https://schema.org', '@type': 'AboutPage', url: `${site.origin}/about.html`, mainEntity: org },
     })
   );
@@ -968,27 +964,6 @@ ${byState
 
       <section class="section">
         <div class="wrap">
-          <p class="eyebrow" data-reveal>In progress</p>
-          <h2 class="h-md" data-reveal>Under construction</h2>
-          <p class="lede" data-reveal>These sites are not open and are not available to rent. When one opens, it moves to <a href="locations.html">Locations</a>.</p>
-          <ul class="store-grid" style="margin-top:var(--sp-4)">
-${builds
-  .map(
-    (b, i) => `            <li class="store-card" data-reveal style="--i:${i}">
-              <div class="store-body">
-                <span class="badge-build">Under construction</span>
-                <h3>${esc(b.name)}</h3>
-                <p class="store-meta">${esc(b.note)}</p>
-              </div>
-            </li>`
-  )
-  .join('\n')}
-          </ul>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="wrap">
           <p class="eyebrow" data-reveal>Land or a project</p>
           <h2 class="h-md" data-reveal>Bring us a site.</h2>
           <p class="lede" data-reveal>If you have land or an existing store, call. We will tell you quickly whether it is a Droit build.</p>
@@ -1005,7 +980,7 @@ ${builds
       slug: 'development',
       title: 'Self-Storage Development | Droit',
       description:
-        'We design, build, and operate self-storage facilities, then stay with the property. Ten stores open across seven states. Call (888) 711-6050.',
+        'We design, build, and operate self-storage facilities, then stay with the property. Call (888) 711-6050.',
       hero,
       main,
       stores,
@@ -1115,7 +1090,7 @@ await emit(
             <div><h2>Net</h2><p>Written wholesale, below your own website price, or there is no deal.</p></div>
             <div><h2>Fill</h2><p>Vacant units only. No listing fee. We are paid on a verified move-in.</p></div>
             <div><h2>Renter channel</h2><p>GetSelfStorageNow, plus the Google, Maps, and store-site channels we run.</p></div>
-            <div><h2>Proof</h2><p>Ten stores open across seven states, booked this same way.</p></div>
+            <div><h2>Proof</h2><p>Our own Des Moines store, booked this same way.</p></div>
           </div>
           <div class="sheet-list">
             <h2>${industry.label}</h2>
@@ -1148,7 +1123,7 @@ ${managementModules
           </div>
           <div class="sheet-grid">
             <div><h2>Stack with booking</h2><p>Filling vacant units is a separate offer on the Booking tab. Stack them if you want both.</p></div>
-            <div><h2>Proof</h2><p>Ten stores open across seven states, run on these same modules.</p></div>
+            <div><h2>Proof</h2><p>Our own Des Moines store, run on these same modules.</p></div>
           </div>
           <p class="sheet-note">${esc(industry.label)}: 69% of storage customers travel twenty minutes or less, and 41% start online with 24% arriving via Google and reviews (SSA Demand Study). Q1 2026 CMBS occupancy: REIT portfolios 87.7%, non-designated 85.2%, sophisticated 81.8% (TractIQ).</p>`
     ),
@@ -1296,7 +1271,7 @@ await emit(
     main: `      <section class="section">
         <div class="wrap">
           <p class="eyebrow">All stores</p>
-          <h2 class="h-md">Ten locations, all open 24/7</h2>
+          <h2 class="h-md">Our store, open 24/7</h2>
           <ul class="nearby">
 ${stores
   .map(
@@ -1374,6 +1349,34 @@ await emit(
 `
 );
 
+// Stores Droit no longer lists. Old URLs are indexed and printed on signage,
+// so each one forwards to the Des Moines store instead of 404ing.
+export const retiredStores = [
+  'eau-claire-clear-space', 'eau-claire-southview', 'river-falls', 'mosinee',
+  'mankato', 'dayton', 'memphis', 'odessa', 'medical-lake',
+];
+for (const slug of retiredStores) {
+  await emit(
+    `${slug}.html`,
+    `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Redirecting | ${site.brand}</title>
+  <link rel="canonical" href="${site.origin}/des-moines">
+  <meta http-equiv="refresh" content="0; url=/des-moines">
+  <script>location.replace("/des-moines");</script>
+</head>
+<body>
+  <p><a href="/des-moines">Continue to Smart Self Storage, Des Moines</a></p>
+</body>
+</html>
+`
+  );
+}
+
 for (const slug of ['privacy', 'terms']) {
   await emit(
     `${slug}/index.html`,
@@ -1433,6 +1436,7 @@ await emit(
   `User-agent: *
 Allow: /
 Disallow: /preview/
+Disallow: /demo/
 
 Sitemap: ${site.origin}/sitemap.xml
 `
